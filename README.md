@@ -16,13 +16,23 @@ The app must be able to do the following:
 This app is setup to use Laravel Homestead using vagrant so follow the instruction @ https://laravel.com/docs/6.x/homestead to use this
 
 1. Fork this repo and git clone it to your local environment
-2. Setup Laravel Homestead (https://laravel.com/docs/6.x/homestead)
-3. Navigate to the project folder
-4. run `composer install`
-5. run `vagrant up`
-6. SSH into the vagrant machine
-7. run `npm install` or `yarn install` 
-8. Navigate to the URl that you have setup in homestead.yaml
+2. Ensure that you have Vagrant, Virtual Box, PHP & Composer install and setup
+3. Setup Homestead configuration by copying `Homesteade.example.yaml` to `Homestead.yaml` and change the following line:
+```
+    folders:
+    - map: {{Add Path to Project Folder on your computer}}
+    - to: /home/vagrant/code
+```
+4. Point `homestead.test` or custom domain to the ip address in the `Hoemstead.yaml` file
+5. Navigate to the project folder
+6. run `composer install`
+7. run `vagrant up`
+8. run `vagrant ssh` to ssh into the vagrant and naviage to the 'to' folder in your Homestead.yaml file
+9. run `npm install` or `yarn install`
+10. run `art key:generate`
+10. Navigate to the URl that you have setup in homestead.yaml
+
+** If you have difculty with getting vagrant to launch make sure that you run `vagrant destroy` to start again ***
 
 Your all set to go
 
