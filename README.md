@@ -7,13 +7,13 @@ A code challenge for applicants to demonstrate their developement skills and kno
 ### Challenge
 You are to create a media library app using this laravel app and vue js.
 The app must be able to do the following:
-* Allow the user to search for images from unsplash
-* Allow the user to select an image to add to the medai library
+* Allows the user to search for images from unsplash
+* Allows the user to select an image to add to the media library with addition information such as title and default alt text
+* Allows the user to select media library items and edit them while seeing a preview of the image
 * Creates a responsive media page that allows for viewing a media item by it's self
-* 
 
 ## Setup
-This app is setup to use Laravel Homestead using vagrant so follow the instruction @ https://laravel.com/docs/6.x/homestead to use this
+This app is setup to use Laravel Homestead (https://laravel.com/docs/6.x/homestead) using vagrant
 
 1. Fork this repo and git clone it to your local environment
 2. Ensure that you have Vagrant, Virtual Box, PHP & Composer install and setup
@@ -41,3 +41,4 @@ To allow access to the Unsplash API you need to register as a developer with uns
 
 ### Conclusion
 Please respond to us when you have finished with the link to your repo
+If you get stuck or have a question please feel free to contact us.
