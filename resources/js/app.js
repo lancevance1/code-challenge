@@ -8,33 +8,6 @@ import Vue from 'vue'
 import { InertiaApp } from '@inertiajs/inertia-vue'
 Vue.use(InertiaApp)
 
-/**
- * Import and setup Vuetify
- */
-import Vuetify from 'vuetify'
-import "vuetify/dist/vuetify.min.css";
-import '@mdi/font/css/materialdesignicons.css'
-Vue.use(Vuetify)
-
-const vuetify = new Vuetify({
-    theme: {
-        themes: {
-            light: {
-                primary: '#1b588c',
-                secondary: '#2196f3',
-                accent: '#00bcd4',
-                error: '#f44336',
-                warning: '#ffc107',
-                info: '#03a9f4',
-                success: '#4caf50'
-            }
-        }
-    },
-    icons: {
-        iconfont: 'mdi'
-    }
-})
-
 let app = document.getElementById('app')
 
 new Vue({
