@@ -18,3 +18,5 @@ yarn-error.log
 user-customizations.sh
 user-vagrant-customizations.rb
 **/.DS_Store
+/.env.swn
+/.env.swp
