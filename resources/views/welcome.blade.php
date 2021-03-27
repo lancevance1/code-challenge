@@ -87,14 +87,10 @@
 
             <div class="content">
 
-
-
                     <div id="app">
+                        <media-component></media-component>
                     <example-component></example-component>
                     </div>
-{{--                <img src="https://picsum.photos/id/11/500/300" class="img-fluid" alt="Responsive image">--}}
-
-
             </div>
         </div>
 
