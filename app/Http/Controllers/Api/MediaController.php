@@ -25,7 +25,7 @@ class MediaController extends Controller
         return MediaResource::collection(Media::all());
     }
 
-    //Returns a media items by id in the current user.
+    //Returns a media item by id in the current user.
     public function show($id)
     {
         return new MediaResource(Media::findOrFail($id));
@@ -49,7 +49,8 @@ class MediaController extends Controller
 //        return response()->json($tmp, 201);
     }
 
-    public function update(Request $request, Media $media)
+    //Updates a media item by id in the current user.
+    public function update(Request $request, $id)
     {
         $response = array('response' => '', 'success' => false);
         $validator = Validator::make($request->all(), $this->rules);
@@ -58,20 +59,21 @@ class MediaController extends Controller
             $response['response'] = $validator->messages();
         } else {
             //process the request
-
+            $media = Media::findOrFail($id);
             $media->update($request->all());
             $media->save();
-
             $response['success'] = true;
             $response['response'] = "successfully updated";
         }
         return $response;
     }
 
-    public function destroy( Media $media)
+    //Deletes a media item by id in the current user.
+    public function destroy($id)
     {
         $response = array('response' => '', 'success' => false);
         try {
+            $media = Media::findOrFail($id);
             $media->delete();
             $response['success']=true;
             $response['response'] = "successfully delete";

@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+header('Access-Control-Allow-Headers: *');
+
+
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');

@@ -12,8 +12,17 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+import { ImagePlugin } from 'bootstrap-vue'
+import { BPagination,BTable } from 'bootstrap-vue'
+
+import { BootstrapVue } from 'bootstrap-vue'
+import { LayoutPlugin } from 'bootstrap-vue'
+import { FormPlugin } from 'bootstrap-vue'
+import { FormGroupPlugin } from 'bootstrap-vue'
+Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,7 +35,8 @@ Vue.use(VueRouter)
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import { BPagination,BTable } from 'bootstrap-vue'
+
+
 Vue.component('b-pagination', BPagination)
 Vue.component('b-table', BTable)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);

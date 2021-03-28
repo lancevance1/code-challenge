@@ -20,3 +20,4 @@ user-vagrant-customizations.rb
 **/.DS_Store
 /.env.swn
 /.env.swp
+/ca.homestead.homestead.crt
