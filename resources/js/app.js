@@ -12,13 +12,10 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import { ImagePlugin } from 'bootstrap-vue'
 import { BPagination,BTable } from 'bootstrap-vue'
-
 import { BootstrapVue } from 'bootstrap-vue'
-import { LayoutPlugin } from 'bootstrap-vue'
-import { FormPlugin } from 'bootstrap-vue'
-import { FormGroupPlugin } from 'bootstrap-vue'
+import MediaItemComponent from "./components/MediaItemComponent";
+
 Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -41,6 +38,7 @@ Vue.component('b-pagination', BPagination)
 Vue.component('b-table', BTable)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('media-component', require('./components/MediaComponent.vue').default);
+Vue.component('media-item-component', require('./components/MediaItemComponent.vue').default);
 
 
 /**
@@ -57,7 +55,7 @@ const routes = [
     {
         name: 'media',
         path: '/media/:mediaId',
-        component: MediaComponent
+        component: MediaItemComponent
     },
 ];
 const router = new VueRouter({mode: 'history', routes: routes});

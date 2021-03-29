@@ -21,8 +21,8 @@ class MediaController extends Controller
     public function index()
     {
         //to do: pagination
-
-        return MediaResource::collection(Media::all());
+        $results = Media::orderBy('id')->get();
+        return MediaResource::collection($results);
     }
 
     //Returns a media item by id in the current user.

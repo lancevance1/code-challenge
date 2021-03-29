@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
-class HomeCOntroller extends Controller
+class SearchController extends Controller
 {
     public function __construct()
     {
@@ -13,6 +12,6 @@ class HomeCOntroller extends Controller
     }
     public function index()
     {
-        return view('welcome');
+        return view('search');
     }
 }
