@@ -20,4 +20,5 @@ header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::apiResource('media', 'Api\MediaController');

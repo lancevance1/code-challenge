@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
@@ -13,6 +15,6 @@ class HomeCOntroller extends Controller
     }
     public function index()
     {
-        return view('welcome');
+        return redirect('/media');
     }
 }

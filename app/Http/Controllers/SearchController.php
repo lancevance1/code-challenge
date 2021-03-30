@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -12,6 +14,8 @@ class SearchController extends Controller
     }
     public function index()
     {
-        return view('search');
+        $id=Auth::id();
+        $user = User::findOrFail($id);
+        return view('search',compact('user'));
     }
 }

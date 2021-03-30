@@ -9,9 +9,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-                        <div id="app">
-                            <media-item-component :token="'{{$user->api_token}}'"></media-item-component>
-                        </div>
+{{--                {{$user->id}}--}}
+                {{$id}}
 
 
                 </div>

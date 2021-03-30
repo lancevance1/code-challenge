@@ -7,7 +7,7 @@
         <div class="flex-center position-ref full-height">
 
                     <div id="app">
-                        <media-component></media-component>
+                        <media-component :token="'{{$user->api_token}}'"></media-component>
 
                     </div>
 

@@ -12,7 +12,7 @@
 
                     <div id="app">
 
-                    <example-component></example-component>
+                    <search-component :token="'{{$user->api_token}}'"></search-component>
                     </div>
 
         </div>

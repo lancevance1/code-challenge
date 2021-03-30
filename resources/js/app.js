@@ -16,6 +16,7 @@ import { BPagination,BTable } from 'bootstrap-vue'
 import { BootstrapVue } from 'bootstrap-vue'
 import MediaItemComponent from "./components/MediaItemComponent";
 
+
 Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -36,9 +37,10 @@ Vue.use(VueRouter)
 
 Vue.component('b-pagination', BPagination)
 Vue.component('b-table', BTable)
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('search-component', require('./components/SearchComponent.vue').default);
 Vue.component('media-component', require('./components/MediaComponent.vue').default);
 Vue.component('media-item-component', require('./components/MediaItemComponent.vue').default);
+
 
 
 /**
@@ -53,10 +55,16 @@ Vue.component('media-item-component', require('./components/MediaItemComponent.v
 
 const routes = [
     {
-        name: 'media',
+        name: 'mediaItem',
         path: '/media/:mediaId',
         component: MediaItemComponent
     },
+    {
+        name: 'media',
+        path: '/media',
+        component: MediaComponent
+    },
+
 ];
 const router = new VueRouter({mode: 'history', routes: routes});
 new Vue(

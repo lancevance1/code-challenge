@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Media;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MediaController extends Controller
 {
@@ -12,11 +15,15 @@ class MediaController extends Controller
     }
     public function index()
     {
-        return view('welcome');
+        $id = Auth::id();
+        $user = User::findOrFail($id);
+        return view('welcome',compact('user'));
     }
-    public function show()
+    public function show(Media $media)
     {
-        return view('media.show');
+        $id = Auth::id();
+        $user = User::findOrFail($id);
+        return view('media.show',compact('user'));
     }
 
 }

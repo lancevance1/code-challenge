@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MediaResource;
 use App\Media;
+
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MediaController extends Controller
@@ -17,11 +20,22 @@ class MediaController extends Controller
 
     ];
 
+
+    // api auth
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+
+    }
+
+
+
     //Returns a list of media items in the current user.
     public function index()
     {
-        //to do: pagination
-        $results = Media::orderBy('id')->get();
+        $id=Auth::id();
+        $user=User::findOrFail($id);
+        $results=$user->media;
         return MediaResource::collection($results);
     }
 
@@ -33,14 +47,18 @@ class MediaController extends Controller
 
     public function store(Request $request)
     {
-
+        $id=Auth::id();
         $validator = Validator::make($request->all(), $this->rules);
 
         if ($validator->fails()) {
+            $response['success'] = false;
             $response['response'] = $validator->messages();
+
         } else {
             //process the request
-            Media::create($request->all());
+            $media = Media::create($request->all());
+            $media->user_id = $id;
+            $media->push();
             $response['success'] = true;
             $response['response'] = "successfully created";
         }

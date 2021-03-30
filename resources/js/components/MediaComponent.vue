@@ -4,11 +4,11 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Media Library</div>
+          <div class="card-header">Media Library total: {{total}}</div>
 
           <div class="card-body">
 <!--            {{responseResults.urls}}-->
-            <b-container fluid class="p-4 bg-dark">
+            <b-container fluid class="p-4 bg-dark" v-if="show">
               <b-row>
                 <b-col v-for="tmp in responseResults" sm="3">
 <!--                  <b-img-lazy thumbnail fluid :src="tmp.urls.thumb" alt=""></b-img-lazy>-->
@@ -28,7 +28,7 @@
 <!--                      {{tmp.altText}}-->
 <!--                    </b-card-text>-->
                     <b-button variant="danger" @click="deleteImage(tmp.databaseId)" size="sm">Delete</b-button>
-                    <b-button :href="`https://homestead.test/media/${tmp.databaseId}`" variant="primary" size="sm">Save</b-button>
+                    <b-button :href="`https://homestead.test/media/${tmp.databaseId}`" variant="primary" size="sm">Show</b-button>
                   </b-card>
 
 
@@ -82,6 +82,8 @@ export default {
       // urlApi: 'http://127.0.0.1:8000/api',
       urlGetMediaItems: '/media',
       response: [],
+      total:0,
+      show:false,
       // searchResult: '',
       // queryTerm: '',
       // imageId: '',
@@ -89,6 +91,17 @@ export default {
       // currentPage: 1,
     }
   },
+  watch:{
+    total(newVal, oldVal) {
+      if (this.total===0){
+        this.show=false;
+      }else{
+        this.show=true;
+      }
+
+    }
+  },
+  props: ['token'],
   mounted() {
     this.loadImages();
     console.log('MediaComponent mounted.')
@@ -107,7 +120,7 @@ export default {
          break;
         }
       }
-
+      this.total--;
       this.responseResults.splice(i, 1);
     },
 
@@ -120,6 +133,9 @@ export default {
         url: this.urlGetMediaItems+'/'+e,
         method: 'delete',
         baseURL: this.urlApi,
+        headers: {
+          'Authorization': 'Bearer '+this.token,
+        },
       })
           .then((response) => {
             console.log(JSON.stringify(response.data));
@@ -136,43 +152,16 @@ export default {
         url: this.urlGetMediaItems,
         method: 'get',
         baseURL: this.urlApi,
-      })
+        headers: {
+          'Authorization': 'Bearer '+this.token,
+        }
+        })
           .then((response) => {
             this.response = response.data;
             console.log(JSON.stringify(response.data));
             console.log(this.response.value);
 
-
-            //this.response.forEach(element => console.log(element));
-            // let i;
-            // for (i=0;i<this.response.length;i++){
-            //   console.log(this.response[i].imageId)
-            //   //console.log(e.altText)
-            //   console.log(this.urlUnsplash+this.urlUnsplashPhotos+'/'+this.response[i].imageId)
-            //
-            //   axios.request({
-            //     url: this.urlUnsplashPhotos+'/'+this.response[i].imageId,
-            //     method: 'get',
-            //     baseURL: this.urlUnsplash,
-            //     headers: {
-            //       'Authorization': ' Client-ID ' + this.ACCESS_KEY
-            //     },
-            //
-            //   })
-            //       .then((response) => {
-            //         // this.responseResult = response.data;
-            //         console.log(this.response);
-            //         response.data['altText']=this.response[i].altText;
-            //         response.data['title']=this.response[i].title;
-            //         response.data['databaseId']=this.response[i].id;
-            //
-            //         console.log(response.data.databaseId);
-            //         this.responseResults.push(response.data);
-            //
-            //
-            //       })
-            //       .catch((error) => console.log(error));
-            // }
+            this.total=response.data.length;
 
             Array.from(this.response).forEach(e =>{
               console.log(e.imageId)
@@ -208,6 +197,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
