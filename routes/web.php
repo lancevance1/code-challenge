@@ -24,9 +24,4 @@ Route::get('search', 'SearchController@index');
 Route::get('/home', 'HomeController@index')->name('home.index');
 Route::get('/media', 'MediaController@index');
 Route::get('media/{media}', 'MediaController@show')->name('media.show');
-//Route::get('users/{user}', 'UserController@show')->name('user.show');
-//
-//Route::resources([
-//    'users' => 'UserController',
-//
-//]);
+

@@ -12,10 +12,7 @@
                         <div id="app">
                             <media-item-component :token="'{{$user->api_token}}'"></media-item-component>
                         </div>
-
-
                 </div>
-
             </div>
         </div>
     </div>

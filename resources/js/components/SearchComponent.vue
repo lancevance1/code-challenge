@@ -24,7 +24,7 @@
                 <b-img-lazy v-bind="mainProps" :src="tmp.urls.small" :alt="tmp.altText"></b-img-lazy>
 
                 <!--input groups                -->
-                <b-form-group label="Select" :id="`input-group-3-${tmp.id}`">
+                <b-form-group  :id="`input-group-3-${tmp.id}`">
                   <b-form-checkbox-group
                       v-model="form.imageId[tmp.id]"
                       :id="`checkboxes-3-${tmp.id}`">
@@ -184,7 +184,7 @@ export default {
           tmpData.imageId = key;
           tmpData.altText = this.form.altText[key];
           tmpData.title = this.form.title[key];
-        }
+
 
 
         let data = JSON.stringify(tmpData);
@@ -210,6 +210,7 @@ export default {
               }
             })
             .catch((error) => console.log(error.response.data));
+        }
       }
 
       this.formReset();

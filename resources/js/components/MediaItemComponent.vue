@@ -27,7 +27,6 @@
                     id="input-group-1"
                     label="Title"
                     label-for="input-1"
-
                 >
                   <b-form-input
                       id="input-1"
@@ -45,15 +44,11 @@
                   ></b-form-input>
                 </b-form-group>
 
-
-
 <!--                <b-button :href="`https://homestead.test/media/`"  type="submit" variant="primary" size="sm">Submit</b-button>-->
                 <b-button  type="submit" variant="primary" size="sm">Submit</b-button>
                 <b-button variant="danger" @click="deleteImage(response.id)" size="sm">Delete</b-button>
               </b-form>
-
             </b-card>
-
 
           </div>
         </div>
@@ -74,22 +69,16 @@ export default {
       },
       show: false,
       responseResults: [],
-      // responseResult: [],
       urlApi: 'https://homestead.test/api',
       urlUnsplash: 'https://api.unsplash.com',
       urlUnsplashPhotos: '/photos',
       ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',
-      // urlApi: 'http://127.0.0.1:8000/api',
       urlGetMediaItems: '/media',
       response: {},
       mediaId:0,
       imageSrc:'',
       imageId:'',
-      // searchResult: '',
-      // queryTerm: '',
-      // imageId: '',
-      // perPage: 10,
-      // currentPage: 1,
+
     }
   },
   mounted() {
@@ -116,7 +105,6 @@ export default {
     },
     onSubmit:function (event) {
       event.preventDefault()
-
       alert(JSON.stringify(this.form))
 
 
@@ -140,7 +128,12 @@ export default {
 
       axios(config)
           .then((response) => {
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
+            if (response.data.success === true) {
+              alert('image edited');
+            } else{
+              alert('unexpected error');
+            }
           })
           .catch((error) => {
             console.log(error.response.data);
@@ -150,7 +143,7 @@ export default {
     },
     findImage:function (e) {
       let i;
-      // console.log(this.responseResults[0].databaseId);
+
       for (i=0;i<this.responseResults.length;i++){
         // console.log(this.responseResults[i].databaseId);
         if (this.responseResults[i].databaseId===e){
@@ -197,9 +190,8 @@ export default {
       })
           .then((response) => {
             this.response = response.data;
-            console.log(JSON.stringify(response.data));
-
-            console.log(this.response.imageId)
+            // console.log(JSON.stringify(response.data));
+            // console.log(this.response.imageId)
             this.imageId = this.response.imageId;
             this.form.title=this.response.title;
             this.form.altText=this.response.altText;
@@ -217,7 +209,7 @@ export default {
 
                   this.responseResults = response.data;
                   this.imageSrc = this.responseResults.urls.regular;
-                  console.log(this.responseResults);
+                  // console.log(this.responseResults);
 
                 })
                 .catch((error) => console.log(error.response.data));

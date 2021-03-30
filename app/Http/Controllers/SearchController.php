@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
@@ -12,6 +11,11 @@ class SearchController extends Controller
     {
         $this->middleware('auth');
     }
+
+    /**
+     * show search page after passing user authentication
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $id=Auth::id();

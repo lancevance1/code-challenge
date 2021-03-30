@@ -8,9 +8,7 @@
 
                     <div id="app">
                         <media-component :token="'{{$user->api_token}}'"></media-component>
-
                     </div>
-
         </div>
 @endsection
 
