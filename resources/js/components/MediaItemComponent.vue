@@ -70,7 +70,7 @@ export default {
       show: false,
       responseResults: [],
       // urlApi: 'https://homestead.test/api',
-      urlApi: '172.105.191.198/api',
+      urlApi: 'api',
       urlUnsplash: 'https://api.unsplash.com',
       urlUnsplashPhotos: '/photos',
       ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',

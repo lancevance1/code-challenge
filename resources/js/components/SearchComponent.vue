@@ -113,7 +113,7 @@ export default {
       show: false,
       urlGetMediaItems: '/media',
       // urlApi: 'https://homestead.test/api',
-      urlApi: '172.105.191.198/api',
+      urlApi: 'api',
       responseResults: [],
       urlUnsplash: 'https://api.unsplash.com',
       urlRandom: '/photos/random',
