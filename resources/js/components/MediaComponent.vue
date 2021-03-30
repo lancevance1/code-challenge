@@ -19,7 +19,7 @@
 
                   >
                     <b-button variant="danger" @click="deleteImage(tmp.databaseId)" size="sm">Delete</b-button>
-                    <b-button :href="`https://homestead.test/media/${tmp.databaseId}`" variant="primary" size="sm">
+                    <b-button :href="`media/${tmp.databaseId}`" variant="primary" size="sm">
                       Show
                     </b-button>
                   </b-card>
