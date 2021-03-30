@@ -106,7 +106,7 @@ export default {
     },
     onSubmit:function (event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form))
+      // alert(JSON.stringify(this.form))
 
 
       const qs = require('qs');
