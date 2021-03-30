@@ -43,7 +43,8 @@ export default {
   data: function () {
     return {
       responseResults: [],
-      urlApi: 'https://homestead.test/api',
+      // urlApi: 'https://homestead.test/api',
+      urlApi: 'https://172.105.191.198/api',
       urlUnsplash: 'https://api.unsplash.com',
       urlUnsplashPhotos: '/photos',
       ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',
