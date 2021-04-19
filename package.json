@@ -7,38 +7,39 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
-    "watch-poll": "npm run watch -- --watch-poll"
+    "watch-poll": "npm run watch -- --watch-poll",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "@inertiajs/inertia": "^0.2.1",
     "@inertiajs/inertia-vue": "^0.2.1",
     "@vue/cli": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.21.2",
+    "lodash": "^4.17.21",
     "qs": "^6.10.1",
     "tailwindcss": "^1.7.6",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
-    "vue-template-compiler": "^2.6.12",
     "vuetify": "^2.4.8"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.11.5",
     "@nuxtjs/vuetify": "^1.11.3",
-    "axios": "^0.19",
     "bootstrap": "^4.5.2",
     "cross-env": "^6.0",
     "deepmerge": "^4.2.2",
     "jquery": "^3.2",
     "laravel-mix": "^5.0.9",
-    "lodash": "^4.17.21",
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.12",
     "portal-vue": "^2.1.7",
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.32.8",
     "sass-loader": "^10.0.2",
-    "vue": "^2.5.17",
     "vue-cli-plugin-bootstrap-vue": "~0.7.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   }
 }
