@@ -19,7 +19,7 @@
               <p>Total results: {{ total || 0 }}</p>
 
             </div>
-            <li v-for="tmp in responseResults.results">
+            <div v-for="tmp in responseResults.results">
               <b-form @submit="onSubmit">
                 <b-img-lazy v-bind="mainProps" :src="tmp.urls.small" :alt="tmp.altText"></b-img-lazy>
 
@@ -65,7 +65,7 @@
               </b-form>
 
 
-            </li>
+            </div>
 
             <!-- pagination                     -->
             <!-- @input="searchImage(searchResult)" not a good way to implement pagination, need to be improved -->

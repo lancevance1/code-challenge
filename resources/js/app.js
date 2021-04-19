@@ -40,6 +40,7 @@ Vue.component('b-table', BTable)
 Vue.component('search-component', require('./components/SearchComponent.vue').default);
 Vue.component('media-component', require('./components/MediaComponent.vue').default);
 Vue.component('media-item-component', require('./components/MediaItemComponent.vue').default);
+Vue.component('extend-image-component', require('./components/MediaItemComponent.vue').default);
 
 
 
