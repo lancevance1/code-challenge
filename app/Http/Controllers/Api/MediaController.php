@@ -4,54 +4,51 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MediaRequest;
+use App\Http\Resources\Collections\MediaCollection;
 use App\Http\Resources\MediaResource;
 use App\Models\Media;
-use App\Repositories\Interfaces\MediaRepositoryInterface;
-use App\Models\User;
-use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\MediaRepository;
-use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-
 class MediaController extends Controller
 {
-    private $mediaRepository, $userRepository;
+    private $mediaRepository;
   
-   public function __construct(MediaRepository $mediaRepository, UserRepository $userRepository)
+   public function __construct(MediaRepository $mediaRepository)
    {
        $this->mediaRepository = $mediaRepository;
-       $this->userRepository = $userRepository;
    }
 
-    //Returns a list of media items in the current user.
     public function index()
     {
-        
-        return $this->userRepository->index();
-    }
+        $result = $this->mediaRepository->index();
 
-    //Returns a media item by id in the current user.
-    public function show($media)
-    {
-        return $this->userRepository->show($media);
+        return new MediaCollection($result);
     }
 
     public function store(MediaRequest $request)
     {
-      
+        $result = $this->mediaRepository->store($request);
+
+        return new MediaResource($result);
     }
 
-    //Updates a media item by id in the current user.
-    public function update(MediaRequest $request, $media)
+    public function show(Media $media)
     {
-       
+        $result = $this->mediaRepository->show($media);
+
+        return new MediaResource($result);
     }
 
-    //Deletes a media item by id in the current user.
-    public function destroy($media)
+    public function update(MediaRequest $request, Media $media)
     {
-       
+        $result = $this->mediaRepository->update($request, $media);
+
+        return new MediaResource($result);
+    }
+
+    public function destroy(Media $media)
+    {
+        $result = $this->mediaRepository->destroy($media);
+
+        return response()->json(['success' => $result]);
     }
 }

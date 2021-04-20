@@ -26,4 +26,5 @@ Route::get('/', function () {
 
 Route::get('search', [SearchController::class, 'index']);
 Route::get('home', [HomeController::class, 'index'])->name('home.index');
-Route::get('media', [MediaController::class, 'show'])->name('media.show');
+Route::get('media', [MediaController::class, 'index']);
+// Route::get('media', [MediaController::class, 'show'])->name('media.show');

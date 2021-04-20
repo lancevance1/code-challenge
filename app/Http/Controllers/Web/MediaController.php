@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Collections\MediaCollection;
 use App\Models\Media;
 use App\Models\User;
 use Inertia\Inertia;
@@ -26,14 +27,7 @@ class MediaController extends Controller
                     'email' => $user->email,
                 ];
             }),
-            'media' => Media::all()->map(function ($media) {
-                return [
-                    'id' => $media->id,
-                    'imageId' => $media->imageId,
-                    'title' => $media->title,
-                    'altText' => $media->altText,
-                ];
-            }),
+            'media' => new MediaCollection(Media::all()),
         ]);
     }
 }

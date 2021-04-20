@@ -13,7 +13,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
 
-   public function create($request)
+   public function store($request)
    {
         return Media::create([
             'title' => $request->title,
