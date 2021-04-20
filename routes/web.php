@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\MediaController;
+use App\Http\Controllers\Web\SearchController;
+
 header('Access-Control-Allow-Headers: *');
 
 
@@ -20,8 +24,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('search', 'SearchController@index');
-Route::get('/home', 'HomeController@index')->name('home.index');
-Route::get('/media', 'MediaController@index');
-Route::get('media/{media}', 'MediaController@show')->name('media.show');
-
+Route::get('search', [SearchController::class, 'index']);
+Route::get('home', [HomeController::class, 'index'])->name('home.index');
+Route::get('media', [MediaController::class, 'show'])->name('media.show');

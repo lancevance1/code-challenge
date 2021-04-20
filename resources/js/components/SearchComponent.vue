@@ -19,12 +19,17 @@
               <p>Total results: {{ total || 0 }}</p>
 
             </div>
+
+          </div>
+          <extend-image-component></extend-image-component>
+          </div>
+
             <div v-for="tmp in responseResults.results">
               <b-form @submit="onSubmit">
                 <b-img-lazy v-bind="mainProps" :src="tmp.urls.small" :alt="tmp.altText"></b-img-lazy>
 
                 <!--input groups                -->
-                <b-form-group  :id="`input-group-3-${tmp.id}`">
+                <!-- <b-form-group  :id="`input-group-3-${tmp.id}`">
                   <b-form-checkbox-group
                       v-model="form.imageId[tmp.id]"
                       :id="`checkboxes-3-${tmp.id}`">
@@ -62,7 +67,7 @@
                         v-show="showInput(tmp.id)">Add
                 </button>
 
-              </b-form>
+              </b-form> -->
 
 
             </div>
@@ -89,7 +94,9 @@
 </template>
 
 <script>
+import ExtendImageComponent from './ExtendImageComponent.vue';
 export default {
+  components: { ExtendImageComponent },
 
   data: function () {
     return {
