@@ -28,8 +28,8 @@ class MediaController extends Controller
     {
         $result = $this->mediaRepository->store($request);
 
-        // return new MediaResource($result);
-        return response()->json(['success' => $result]);
+        return new MediaResource($result);
+        // return response()->json(['success' => $result]);
     }
 
     public function show(Media $medium)
@@ -43,8 +43,8 @@ class MediaController extends Controller
     {
         $result = $this->mediaRepository->update($request, $medium);
     
-        // return new MediaResource($result);
-        return response()->json(['success' => $result]);
+        return new MediaResource($result);
+        // return response()->json(['success' => $result]);
     }
 
     public function destroy(Media $medium)

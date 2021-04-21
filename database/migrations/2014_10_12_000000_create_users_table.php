@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // $table->string('api_token', 80)->after('password')
+            //     ->unique()
+            //     ->nullable()
+            //     ->default(null);
         });
     }
 
@@ -31,6 +36,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+       
         Schema::dropIfExists('users');
     }
 }

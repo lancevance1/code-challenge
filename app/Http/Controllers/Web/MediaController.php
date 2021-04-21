@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Collections\MediaCollection;
 use App\Models\Media;
 use App\Models\User;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 
 class MediaController extends Controller
@@ -20,6 +21,9 @@ class MediaController extends Controller
                 'update' => route('api.media.update', ':id'),
                 'destroy' => route('api.media.destroy', ':id')
             ],
+
+            // 'create_url' => URL::route('media.create'),
+
             // 'user' => User::all()->map(function ($user) {
             //     return [
             //         'id' => $user->id,
@@ -36,7 +40,7 @@ class MediaController extends Controller
                     'altText' => $media->altText,
                 ];
             }),
-            'media' => new MediaCollection(Media::all()),
+            // 'media' => new MediaCollection(Media::all()),
         ]);
     }
 }

@@ -18,7 +18,7 @@ use App\Http\Controllers\Web\SearchController;
 // header('Access-Control-Allow-Headers: *');
 
 
-Auth::routes();
+// Auth::routes();
 Route::get('/', function () {
     return redirect('/home');
 });
@@ -26,5 +26,6 @@ Route::get('/', function () {
 
 Route::get('search', [SearchController::class, 'index']);
 Route::get('home', [HomeController::class, 'index'])->name('home.index');
-Route::get('media', [MediaController::class, 'index']);
+// Route::get('media', [MediaController::class, 'index']);
+Route::resource('media', 'Web\MediaController');
 // Route::get('media', [MediaController::class, 'show'])->name('media.show');

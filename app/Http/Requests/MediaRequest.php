@@ -25,8 +25,8 @@ class MediaRequest extends FormRequest
     {
         return [
             "imageId" => 'required',
-            "title" => 'nullable|min:3|max:50',
-            "altText" => 'nullable|min:3|max:255',
+            "title" => 'required|min:3|max:50',
+            "altText" => 'nullable',
         ];
     }
 }
