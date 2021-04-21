@@ -18,19 +18,19 @@ class UserRepository implements UserRepositoryInterface
 
     public function create($request){
         return User::create([
-            'title' => $request->title,
-            'altText' => $request->altText,
+            'name' => $request->name,
+            'email' => $request->email,
         ]);
     }
 
    public function show($user){
-
+        return $user;
    }
 
    public function update($request, $user){
     $user = $user->update([
-        'title' => $request->title,
-        'altText' => $request->altText,
+        'name' => $request->name,
+        'email' => $request->email,
         
     ]);
     return $user->fresh();

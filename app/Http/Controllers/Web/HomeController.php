@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * redirect to /media

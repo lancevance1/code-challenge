@@ -15,7 +15,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\MediaController;
 use App\Http\Controllers\Web\SearchController;
 
-header('Access-Control-Allow-Headers: *');
+// header('Access-Control-Allow-Headers: *');
 
 
 Auth::routes();

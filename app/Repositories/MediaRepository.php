@@ -16,29 +16,35 @@ class MediaRepository implements MediaRepositoryInterface
    public function store($request)
    {
         return Media::create([
-            'title' => $request->title,
-            'altText' => $request->altText,
+          'imageId' => $request->imageId,
+          'title' => $request->title,
+          'altText' => $request->altText,
         ]);
    }
 
-   public function show($media)
+   public function show($medium)
    {
-        return $media;
+        return $medium;
    }
 
-   public function update($request, $media)
+   public function update($request, $medium)
    {
-        $media = $media->update([
-            'title' => $request->title,
-            'altText' => $request->altText,
+     
+     // $medium = $request->validated();
+     
+        $medium = $medium->update([
+          'imageId' => $request->imageId,
+          'title' => $request->title,
+          'altText' => $request->altText,
             
         ]);
-
-        return $media->fresh();
+        
+        
+        return $medium;
    }
 
-   public function destroy($media)
+   public function destroy($medium)
    {
-        return $media->delete();
+        return $medium->delete();
    }
 }

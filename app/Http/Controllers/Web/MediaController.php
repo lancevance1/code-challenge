@@ -20,11 +20,20 @@ class MediaController extends Controller
                 'update' => route('api.media.update', ':id'),
                 'destroy' => route('api.media.destroy', ':id')
             ],
-            'user' => User::all()->map(function ($user) {
+            // 'user' => User::all()->map(function ($user) {
+            //     return [
+            //         'id' => $user->id,
+            //         'name' => $user->name,
+            //         'email' => $user->email,
+            //     ];
+            // }),
+
+            'media' => Media::all()->map(function ($media) {
                 return [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
+                    'id' => $media->id,
+                    'imageId' => $media->imageId,
+                    'title' => $media->title,
+                    'altText' => $media->altText,
                 ];
             }),
             'media' => new MediaCollection(Media::all()),

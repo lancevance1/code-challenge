@@ -8,9 +8,9 @@ interface MediaRepositoryInterface
 
    public function store($request);
 
-   public function show($media);
+   public function show($medium);
 
-   public function update($request, $media);
+   public function update($request, $medium);
 
-   public function destroy($media);
+   public function destroy($medium);
 }

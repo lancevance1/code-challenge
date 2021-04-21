@@ -28,26 +28,28 @@ class MediaController extends Controller
     {
         $result = $this->mediaRepository->store($request);
 
-        return new MediaResource($result);
+        // return new MediaResource($result);
+        return response()->json(['success' => $result]);
     }
 
-    public function show(Media $media)
+    public function show(Media $medium)
     {
-        $result = $this->mediaRepository->show($media);
-
-        return new MediaResource($result);
-    }
-
-    public function update(MediaRequest $request, Media $media)
-    {
-        $result = $this->mediaRepository->update($request, $media);
+        $result = $this->mediaRepository->show($medium);
 
         return new MediaResource($result);
     }
 
-    public function destroy(Media $media)
+    public function update(MediaRequest $request, Media $medium)
     {
-        $result = $this->mediaRepository->destroy($media);
+        $result = $this->mediaRepository->update($request, $medium);
+    
+        // return new MediaResource($result);
+        return response()->json(['success' => $result]);
+    }
+
+    public function destroy(Media $medium)
+    {
+        $result = $this->mediaRepository->destroy($medium);
 
         return response()->json(['success' => $result]);
     }

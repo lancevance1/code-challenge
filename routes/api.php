@@ -13,7 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['auth:api'], 'as' => 'api.'], function () {
+// Route::group(['middleware' => ['auth:api'], 'as' => 'api.'], function () {
+//     Route::apiResource('media', 'Api\MediaController');
+// });
+// Route::apiResource('media', 'Api\MediaController');
+Route::group(['middleware' => ['api'], 'as' => 'api.'], function () {
     Route::apiResource('media', 'Api\MediaController');
 });
-
