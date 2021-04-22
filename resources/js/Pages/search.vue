@@ -1,6 +1,6 @@
 <template>
-<layout title="Welcome">
-<!--  
+  <layout title="Welcome">
+    <!--  
     <label for="imageId">ImageId:</label>
     <input id="imageId" v-model="form.imageId" />
    
@@ -10,166 +10,169 @@
      <label for="altText">AltText:</label>
     <input id="altText" v-model="form.altText" />
      -->
+
+   
+
+    <div class="flex border-grey-light border ">
+      <input
+        class="w-full  ml-1"
+        type="text"
+        placeholder="Search..."
+        v-model="searchResult"
+      />
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        v-on:click="searchImage(searchResult)"
+      >
+        Search
+      </button>
+    </div>
+
+
+
+
+<Waterfall>
+  <div class="flex border-grey-light border ">
+      <div v-for="tmp in responseResults.results" >
+        <WaterfallItem><img :src="tmp.urls.small" :alt="tmp.altText" /></WaterfallItem>
+      </div>
+    </div>
+
   
+  
+</Waterfall>
 
 
-<div class="py-12 mx-auto">
-     <form @submit="onSubmit">
-          <h2 class="text-2xl font-bold">Add an image</h2>
-          <p class="mt-2 text-lg text-gray-600">test test.</p>
-          <div class="mt-8 max-w-md">
-            <div class="grid grid-cols-1 gap-6">
-              <label for="imageId" class="block">
-                <span class="text-gray-700">ImageId</span>
-                <input id="imageId" v-model="form.imageId" type="text" class="mt-1 block w-full" placeholder="" />
-              </label>
-              <label for="title" class="block">
-                <span class="text-gray-700">Title</span>
-                <input id="title" v-model="form.title" type="text" class="mt-1 block w-full" placeholder="ABC..." />
-              </label>
-              
-              
-              <label for="altText" class="block">
-                <span class="text-gray-700">AltText</span>
-                <textarea id="altText" v-model="form.altText" class="mt-1 block w-full" rows="3"></textarea>
-              </label>
 
-             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-             type="submit" :disabled="form.processing">Submit</button>
-            </div>
-          </div>
-          </form>
-</div>
+    <div class="flex border-grey-light border ">
+      <div v-for="tmp in responseResults.results" >
+        <img :src="tmp.urls.small" :alt="tmp.altText" />
+      </div>
+    </div>
 
 
-<div class="flex border-grey-light border ">
-                <input
-                  class="w-full  ml-1"
-                  type="text"
-                  placeholder="Search..."
-                  v-model="searchResult"
-                />
-                <button
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  v-on:click="searchImage(searchResult)"
-                >
-                  Search
-                </button>
-              </div>
 
-              <div class="flex border-grey-light border ">
 
-                  
-                  <div v-for="tmp in responseResults.results">
-              
-                <img  :src="tmp.urls.small" :alt="tmp.altText">
-            
-              </div>
-              </div>
 
-</layout>
+  </layout>
 </template>
 
 <script>
-import Layout from './Layout'
-import axios from 'axios';
+import Layout from '../Shared/Layout'
+import axios from "axios";
+
+import vueWaterfallEasy from 'vue-waterfall-easy'
+
 
 export default {
-
-    
   data() {
     return {
-       form: {
+      imgsArr: [],
+      group: 0,// request param
+      
+      form: {
         title: null,
         altText: null,
         imageId: null,
       },
       
       responseResults: [],
-      urlUnsplash: 'https://api.unsplash.com',
-      urlRandom: '/photos/random',
-      urlSearch: 'search/photos',
-      ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',
-      searchResult: '',
-      queryTerm: '',
-      imageId: '',
+      urlUnsplash: "https://api.unsplash.com",
+      urlRandom: "/photos/random",
+      urlSearch: "search/photos",
+      ACCESS_KEY: "wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI",
+      searchResult: "",
+      // queryTerm: "",
+      imageId: "",
       perPage: 10,
       currentPage: 1,
       total: 0,
-    }
+    };
   },
   components: {
-       // Using a render function
-      layout: (h, page) => h(Layout, [page]),
-    },
+    // Using a render function
+    layout: (h, page) => h(Layout, [page]),
+    
+     Waterfall,
+     WaterfallItem
+  },
+  mounted() {
+    // console.log(route('search'));
+    this.searchResult = this.$route.query.q;
+  },
+  watch:{
+    $route(to, from) {
+      console.log("a")
+    }
+  },
+  // computed: {
+  //   queryTerm: function() {
+      
+  //       return this.$route.query.q;
+      
+      
+  //   },
+  // },
+  // watch: {
+  //    searchResult: function () {
+
+  //     console.log(this.$route.query.page);
+  //     this.searchResult =  this.$route.query.page;
+  //   }
+
+  // },
+
+  // created() {
+  //   this.getData()
+  // },
+
   methods: {
     // submit() {
     //   this.$inertia.post(this.$page.props.urls.store, this.form)
     // },
 
- onSubmit: function (event) {
-      event.preventDefault();
-      // alert(JSON.stringify(this.form));
-      //add all selected images
-      
-        let data = JSON.stringify(this.form);
-        console.log(this.$page.props.urls.store);
-        console.log(data);
+    getData() {
+      // In the real environment,the backend will return a new image array based on the parameter group.
+      // Here I simulate it with a stunned json file.
+      // axios.get('./static/mock/data.json?group=' + this.group)
+      //   .then(res => {
+      //     this.imgsArr = this.imgsArr.concat(res.data)
+      //     this.group++
+      //   })
 
-        axios.request({
-          url: this.$page.props.urls.store,
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          data: data
-        })
-            .then((response) => {
-              console.log(JSON.stringify(response.status));
-              if (response.status === 201) {
-                alert('image added');
-              }else {
-                alert('unexpected error');
-              }
-            })
-            .catch((error) => {
-                // console.log(error.response);
-                if(error.response.status===422){
-                    alert(error.response.data.message);
-                }
-                console.log(error.response.data)
-                });
-      
-      
+      this.searchImage(this.searchResult);
+      this.currentPage++;
     },
 
-      searchImage: function (e) {
-      this.queryTerm = e;
+    searchImage: function(e) {
       
-      axios.request({
-        url: this.urlSearch,
-        method: 'get',
-        baseURL: this.urlUnsplash,
-        headers: {
-          'Authorization': ' Client-ID ' + this.ACCESS_KEY
-        },
-        params: {
-          query: this.queryTerm,
-          page: this.currentPage,
-        }
-      })
-          .then((response) => {
-            this.responseResults = response.data;
-            this.total = response.data.total;
-            console.log(response.data.total);
-            // Array.from(this.responseResults.results).forEach(e => {
-            //   console.log(e.id);
-            // })
-          })
-          .catch((error) => console.log(error));
+      this.queryTerm = e;
+      // this.$inertia.replace(this.route('search', Object.keys(this.queryTerm).length ? this.queryTerm : { remember: 'forget' }));
+      this.$router.push({ path: "search", query: { q: this.searchResult } }).catch(()=>{});
+      axios
+        .request({
+          url: this.urlSearch,
+          method: "get",
+          baseURL: this.urlUnsplash,
+          headers: {
+            Authorization: " Client-ID " + this.ACCESS_KEY,
+          },
+          params: {
+            query: this.queryTerm,
+            page: this.currentPage,
+          },
+        })
+        .then((response) => {
+          this.responseResults = response.data;
+          this.total = response.data.total;
+          console.log(response.data.total);
+          // Array.from(this.responseResults.results).forEach(e => {
+          //   console.log(e.id);
+          // })
+        })
+        .catch((error) => console.log(error));
       // console.log(this.responseResults);
     },
-
   },
-}
+};
 </script>

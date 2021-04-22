@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('search', [SearchController::class, 'index']);
+Route::get('search', [SearchController::class, 'index'])->name('search');;
 Route::get('home', [HomeController::class, 'index'])->name('home.index');
 // Route::get('media', [MediaController::class, 'index']);
 Route::resource('media', 'Web\MediaController');

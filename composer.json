@@ -15,7 +15,8 @@
         "laravel/framework": "^6.2",
         "laravel/homestead": "^10.1",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^1.2"
+        "laravel/ui": "^1.2",
+        "tightenco/ziggy": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

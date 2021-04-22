@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Layout.vue */ "./resources/js/Shared/Layout.vue");
 //
 //
 //
@@ -20,18 +21,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {
-        name: null,
-        email: null
+        title: null,
+        altText: null,
+        imageId: null
       }
     };
   },
+  components: {
+    // Using a render function
+    layout: function layout(h, page) {
+      return h(_Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"], [page]);
+    }
+  },
   methods: {
-    submit: function submit() {
-      this.$inertia.post(this.$page.props.urls.store, this.form);
+    onSubmit: function onSubmit(event) {
+      event.preventDefault(); // alert(JSON.stringify(this.form));
+      //add all selected images
+
+      var data = JSON.stringify(this.form);
+      console.log(this.$page.props.urls.store);
+      console.log(data);
+      axios.request({
+        url: this.$page.props.urls.store,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: data
+      }).then(function (response) {
+        console.log(JSON.stringify(response.status));
+
+        if (response.status === 201) {
+          alert("image added");
+        } else {
+          alert("unexpected error");
+        }
+      })["catch"](function (error) {
+        // console.log(error.response);
+        if (error.response.status === 422) {
+          alert(error.response.data.message);
+        }
+
+        console.log(error.response.data);
+      });
     }
   }
 });
@@ -53,182 +134,115 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.submit($event)
-        }
-      }
-    },
-    [
-      _c("label", { attrs: { for: "name" } }, [_vm._v("First name:")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.name,
-            expression: "form.name"
-          }
-        ],
-        attrs: { id: "name" },
-        domProps: { value: _vm.form.name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.form, "name", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "email" } }, [_vm._v("Email:")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.form.email,
-            expression: "form.email"
-          }
-        ],
-        attrs: { id: "email" },
-        domProps: { value: _vm.form.email },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.form, "email", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Submit")])
-    ]
-  )
+  return _c("layout", [
+    _c("div", { staticClass: "py-12 mx-auto" }, [
+      _c("form", { on: { submit: _vm.onSubmit } }, [
+        _c("h2", { staticClass: "text-2xl font-bold" }, [
+          _vm._v("Add an image")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mt-2 text-lg text-gray-600" }, [
+          _vm._v("test test.")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-8 max-w-md" }, [
+          _c("div", { staticClass: "grid grid-cols-1 gap-6" }, [
+            _c("label", { staticClass: "block", attrs: { for: "imageId" } }, [
+              _c("span", { staticClass: "text-gray-700" }, [_vm._v("ImageId")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.imageId,
+                    expression: "form.imageId"
+                  }
+                ],
+                staticClass: "mt-1 block w-full",
+                attrs: { id: "imageId", type: "text", placeholder: "" },
+                domProps: { value: _vm.form.imageId },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "imageId", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "block", attrs: { for: "title" } }, [
+              _c("span", { staticClass: "text-gray-700" }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.title,
+                    expression: "form.title"
+                  }
+                ],
+                staticClass: "mt-1 block w-full",
+                attrs: { id: "title", type: "text", placeholder: "ABC..." },
+                domProps: { value: _vm.form.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "block", attrs: { for: "altText" } }, [
+              _c("span", { staticClass: "text-gray-700" }, [_vm._v("AltText")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.altText,
+                    expression: "form.altText"
+                  }
+                ],
+                staticClass: "mt-1 block w-full",
+                attrs: { id: "altText", rows: "3" },
+                domProps: { value: _vm.form.altText },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "altText", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+                attrs: { type: "submit", disabled: _vm.form.processing }
+              },
+              [_vm._v("\n              Submit\n            ")]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
 
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ }),

@@ -43,4 +43,39 @@ class MediaController extends Controller
             // 'media' => new MediaCollection(Media::all()),
         ]);
     }
+
+
+
+    public function create()
+    {
+        return Inertia::render('addImage', [
+            'urls' => [
+                'index' => route('api.media.index'),
+                'store' => route('api.media.store'),
+                'show' => route('api.media.show', ':id'),
+                'update' => route('api.media.update', ':id'),
+                'destroy' => route('api.media.destroy', ':id')
+            ],
+
+            // 'create_url' => URL::route('media.create'),
+
+            // 'user' => User::all()->map(function ($user) {
+            //     return [
+            //         'id' => $user->id,
+            //         'name' => $user->name,
+            //         'email' => $user->email,
+            //     ];
+            // }),
+
+            // 'media' => Media::all()->map(function ($media) {
+            //     return [
+            //         'id' => $media->id,
+            //         'imageId' => $media->imageId,
+            //         'title' => $media->title,
+            //         'altText' => $media->altText,
+            //     ];
+            // }),
+            // 'media' => new MediaCollection(Media::all()),
+        ]);
+    }
 }
