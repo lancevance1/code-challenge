@@ -11,7 +11,12 @@ import PortalVue from 'portal-vue'
 // Vue.use(ZiggyVue, Ziggy);
 
 
+import VueLazyload from 'vue-lazyload'
+import { InertiaProgress } from '@inertiajs/progress'
 
+
+
+Vue.use(VueLazyload)
 
 Vue.use(PortalVue)
 
@@ -40,8 +45,27 @@ const routes = [
 const router = new VueRouter({mode: 'history', routes: routes});
 
 
+InertiaProgress.init({
+  // The delay after which the progress bar will
+  // appear during navigation, in milliseconds.
+  delay: 2500,
+
+  // The color of the progress bar.
+  color: '#29d',
+
+  // Whether to include the default NProgress styles.
+  includeCSS: true,
+
+  // Whether the NProgress spinner will be shown.
+  showSpinner: true,
+})
+
 
 const el = document.getElementById('app')
+
+
+
+
 new Vue(
   
   {

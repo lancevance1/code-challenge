@@ -2,6 +2,7 @@
 <layout>
  
  <div class="py-12 mx-auto">
+
       <form @submit="onSubmit">
         <h2 class="text-2xl font-bold">Add an image</h2>
         <p class="mt-2 text-lg text-gray-600">test test.</p>
@@ -66,9 +67,18 @@ export default {
       },
     }
   },
+  props: {
+    
+   imageId: null,
+  },
   components: {
     // Using a render function
     layout: (h, page) => h(Layout, [page]),
+  },
+  mounted(){
+    this.$page.props.test = 'ssss'
+console.log(this.$route);
+this.form.imageId = 
   },
   methods: {
      onSubmit: function(event) {
