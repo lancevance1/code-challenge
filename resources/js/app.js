@@ -11,8 +11,7 @@ import PortalVue from 'portal-vue'
 // Vue.use(ZiggyVue, Ziggy);
 
 
-const Waterfall = require("vue2-waterfall").Waterfall;
-const WaterfallItem = require("vue2-waterfall").WaterfallItem;
+
 
 Vue.use(PortalVue)
 

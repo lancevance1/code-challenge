@@ -31,24 +31,39 @@
 
 
 
-<Waterfall>
-  <div class="flex border-grey-light border ">
-      <div v-for="tmp in responseResults.results" >
-        <WaterfallItem><img :src="tmp.urls.small" :alt="tmp.altText" /></WaterfallItem>
-      </div>
-    </div>
+<waterfall :line="line"
+        :line-gap="200"
+        :min-line-gap="180"
+        :max-line-gap="220"
+        :watch="items"
+        
+        ref="waterfall">
+  <!-- each component is wrapped by a waterfall slot -->
+  <waterfall-slot
+    v-for="(item, index) in items"
+    :width="item.width"
+    :height="item.height"
+    :order="index"
+    :key="item.id"
+  >
+    <!--
+      your component
+    -->
+     <img :src="item.urls.small" :alt="item.altText" />
 
-  
-  
-</Waterfall>
+
+
+  </waterfall-slot>
+</waterfall>
 
 
 
-    <div class="flex border-grey-light border ">
+    <!-- <div class="flex border-grey-light border ">
       <div v-for="tmp in responseResults.results" >
         <img :src="tmp.urls.small" :alt="tmp.altText" />
+        
       </div>
-    </div>
+    </div> -->
 
 
 
@@ -61,13 +76,22 @@
 import Layout from '../Shared/Layout'
 import axios from "axios";
 
-import vueWaterfallEasy from 'vue-waterfall-easy'
+import Waterfall from 'vue-waterfall/lib/waterfall'
+import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
 
 export default {
   data() {
     return {
-      imgsArr: [],
+      line: 'v',
+      item: {
+        width:100,
+        height:100,
+        id:null,
+        index:null,
+      },
+      items: [],
+      
       group: 0,// request param
       
       form: {
@@ -92,9 +116,8 @@ export default {
   components: {
     // Using a render function
     layout: (h, page) => h(Layout, [page]),
-    
-     Waterfall,
-     WaterfallItem
+    Waterfall,
+    WaterfallSlot
   },
   mounted() {
     // console.log(route('search'));
@@ -166,13 +189,33 @@ export default {
           this.responseResults = response.data;
           this.total = response.data.total;
           console.log(response.data.total);
-          // Array.from(this.responseResults.results).forEach(e => {
-          //   console.log(e.id);
-          // })
+          let i =0;
+          Array.from(this.responseResults.results).forEach(e => {
+            console.log(e.id);
+            this.item = e;
+            
+            this.item["index"] = i;
+            i++;
+            this.items.push(this.item);
+          })
+          console.log(this.items);
         })
         .catch((error) => console.log(error));
       // console.log(this.responseResults);
     },
+
+
+
+     
+
   },
 };
+
+window.addEventListener('scroll', function () {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        if (scrollTop + window.innerHeight >= document.body.clientHeight) {
+          // app.addItems()
+          console.log("haha")
+        }
+      })
 </script>
