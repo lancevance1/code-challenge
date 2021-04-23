@@ -11,52 +11,64 @@
     <input id="altText" v-model="form.altText" />
      -->
 
-   
-
     <div class="flex border-grey-light border ">
       <input
         class="w-full  ml-1"
         type="text"
         placeholder="Search..."
         v-model="searchResult"
+        @keyup.enter="searchImage(searchResult, false)"
       />
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        v-on:click="searchImage(searchResult)"
+        v-on:click="searchImage(searchResult, false)"
       >
         Search
       </button>
     </div>
 
 
+<div class="py-4">
+Total results: {{total}}
 
+</div>
 
-<waterfall :line="line"
-        :line-gap="200"
-        :min-line-gap="180"
-        :max-line-gap="220"
-        :watch="items"
-        
-        ref="waterfall">
-  <!-- each component is wrapped by a waterfall slot -->
-  <waterfall-slot
-    v-for="(item, index) in items"
-    :width="item.width"
-    :height="item.height"
-    :order="index"
-    :key="item.id"
-  >
-    <!--
+    <!-- line gap 600 for 3 lines -->
+    <waterfall
+      :line="line"
+      :line-gap="600"
+      :min-line-gap="180"
+      :max-line-gap="220"
+      :watch="items"
+      ref="waterfall"
+    >
+      <!-- each component is wrapped by a waterfall slot -->
+      <waterfall-slot
+        v-for="(item, index) in items"
+        :width="item.width"
+        :height="item.height"
+        :order="index"
+        :key="item.id"
+      >
+        <!--
       your component
     -->
-     <img :src="item.urls.small" :alt="item.altText" />
+        <div class="container mx-auto py-4">
+          <!-- <img v-lazy="item.urls.regular" :alt="item.altText" />
+          <div v-lazy:background-image="imgObj"></div> -->
+          <inertia-link class="text-lg " href="/media/create" :data="{imageId:item.id}"><img  :src="item.urls.regular" :alt="item.altText" /></inertia-link>
 
 
+          
 
-  </waterfall-slot>
-</waterfall>
+          <!-- with customer error and loading -->
+     <!-- <img v-lazy="imgObj"/>
+     <div v-lazy:background-image="imgObj"></div> -->
+        </div>
+      </waterfall-slot>
+    </waterfall>
 
-
+    <!-- <vue-waterfall-easy :imgsArr="items" @scrollReachBottom="getData" @imgError="imgErrorFn"></vue-waterfall-easy> -->
 
     <!-- <div class="flex border-grey-light border ">
       <div v-for="tmp in responseResults.results" >
@@ -64,42 +76,38 @@
         
       </div>
     </div> -->
-
-
-
-
-
+    <div>
+      
+    </div>
   </layout>
 </template>
 
 <script>
-import Layout from '../Shared/Layout'
+import Layout from "../Shared/Layout";
 import axios from "axios";
 
-import Waterfall from 'vue-waterfall/lib/waterfall'
-import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
-
-
+import Waterfall from "vue-waterfall/lib/waterfall";
+import WaterfallSlot from "vue-waterfall/lib/waterfall-slot";
 export default {
   data() {
     return {
-      line: 'v',
+
+
+      line: "v",
       item: {
-        width:100,
-        height:100,
-        id:null,
-        index:null,
+        src: null,
+        href: null,
       },
       items: [],
-      
-      group: 0,// request param
-      
+
+      group: 0, // request param
+
       form: {
         title: null,
         altText: null,
         imageId: null,
       },
-      
+
       responseResults: [],
       urlUnsplash: "https://api.unsplash.com",
       urlRandom: "/photos/random",
@@ -111,29 +119,29 @@ export default {
       perPage: 10,
       currentPage: 1,
       total: 0,
+      totalPages: 0,
     };
   },
   components: {
     // Using a render function
     layout: (h, page) => h(Layout, [page]),
     Waterfall,
-    WaterfallSlot
+    WaterfallSlot,
   },
   mounted() {
     // console.log(route('search'));
     this.searchResult = this.$route.query.q;
   },
-  watch:{
+  watch: {
     $route(to, from) {
-      console.log("a")
-    }
+      console.log("a");
+    },
   },
   // computed: {
   //   queryTerm: function() {
-      
+
   //       return this.$route.query.q;
-      
-      
+
   //   },
   // },
   // watch: {
@@ -145,33 +153,39 @@ export default {
 
   // },
 
-  // created() {
-  //   this.getData()
-  // },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
 
   methods: {
     // submit() {
     //   this.$inertia.post(this.$page.props.urls.store, this.form)
     // },
 
-    getData() {
-      // In the real environment,the backend will return a new image array based on the parameter group.
-      // Here I simulate it with a stunned json file.
-      // axios.get('./static/mock/data.json?group=' + this.group)
-      //   .then(res => {
-      //     this.imgsArr = this.imgsArr.concat(res.data)
-      //     this.group++
-      //   })
-
-      this.searchImage(this.searchResult);
+    getData: function() {
+      
+      if (this.currentPage === this.totalPages) {
+        return alert("no more images");
+      }
       this.currentPage++;
+      this.searchImage(this.searchResult, true);
+
+      console.log("test");
     },
 
-    searchImage: function(e) {
-      
+    searchImage: function(e, isScroll) {
+      if (!isScroll) {
+        this.itemsReset();
+      }
+
       this.queryTerm = e;
       // this.$inertia.replace(this.route('search', Object.keys(this.queryTerm).length ? this.queryTerm : { remember: 'forget' }));
-      this.$router.push({ path: "search", query: { q: this.searchResult } }).catch(()=>{});
+      this.$router
+        .push({ path: "search", query: { q: this.searchResult } })
+        .catch(() => {});
       axios
         .request({
           url: this.urlSearch,
@@ -189,33 +203,44 @@ export default {
           this.responseResults = response.data;
           this.total = response.data.total;
           console.log(response.data.total);
-          let i =0;
-          Array.from(this.responseResults.results).forEach(e => {
+          this.totalPages = response.data.total_pages;
+          let i = 0;
+          Array.from(this.responseResults.results).forEach((e) => {
             console.log(e.id);
             this.item = e;
-            
+
             this.item["index"] = i;
+
             i++;
             this.items.push(this.item);
-          })
+          });
           console.log(this.items);
         })
         .catch((error) => console.log(error));
       // console.log(this.responseResults);
     },
 
+    itemsReset: function() {
+      this.items = [];
+      this.currentPage = 1;
+    },
 
 
-     
 
+    handleScroll(event) {
+      // Any code to be executed when the window is scrolled
+      
+
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop + window.innerHeight >= document.body.clientHeight) {
+        
+        
+        this.getData();
+      }
+    },
   },
 };
 
-window.addEventListener('scroll', function () {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        if (scrollTop + window.innerHeight >= document.body.clientHeight) {
-          // app.addItems()
-          console.log("haha")
-        }
-      })
+
 </script>
