@@ -16,7 +16,11 @@
       layout: (h, page) => h(Layout, [page]),
     },
     mounted(){
-      // axios.get(this.$page.props.urls.index)
-    }
+       // axios.get(this.$page.props.urls.index)
+
+    },
+    // props: {
+    //   media: [],
+    // },
   }
 </script>

@@ -1,12 +1,7 @@
 <template>
   <main>
     <header>
-      <!-- 
-      <inertia-link href="/">Home</inertia-link>
-      <inertia-link href="/media">Media</inertia-link>
-      <inertia-link href="/search">Search</inertia-link>
 
-  -->
     </header>
 
     <div class="container mx-auto ">
@@ -14,16 +9,10 @@
         <div class="max-w-xl mx-auto py-1 divide-y md:max-w-4xl xl:max-w-full ">
           <div class="py-8">
             <h1 class="text-4xl font-bold">Media Library</h1>
-            <!-- <p class="mt-2 text-lg text-gray-600">
-            foobar
-          </p> -->
             <div class="mt-4 flex space-x-4">
               <inertia-link class="text-lg " href="/">Home</inertia-link>
               <inertia-link class="text-lg " href="/media">Media</inertia-link>
-              <inertia-link class="text-lg " href="/media/create"
-                >Add
-              </inertia-link>
-              <!-- <inertia-link class="text-lg " href="/search"> </inertia-link> -->
+<!--              <inertia-link class="text-lg " href="/media/create">Add</inertia-link>-->
 
               <div class="flex border-grey-light border w-1/2">
                 <input
@@ -40,38 +29,25 @@
                   Search
                 </button>
 
-                <dropdown class="mt-1" placement="bottom-end">
-                  <div
-                    class="flex items-center cursor-pointer select-none group"
-                  >
-                    <div
-                      class="text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600 mr-1 whitespace-nowrap"
-                    >
-                      <!-- <span>{{ $page.props.auth.user.first_name }}</span>
-                  <span class="hidden md:inline">{{ $page.props.auth.user.last_name }}</span> -->
-                      <span>test</span>
-                    </div>
-                    <icon
-                      class="w-5 h-5 group-hover:fill-indigo-600 fill-gray-700 focus:fill-indigo-600"
-                      name="cheveron-down"
-                    />
-                  </div>
-                  <div
-                    slot="dropdown"
-                    class="mt-2 py-2 shadow-xl bg-white rounded text-sm"
-                  >
-                    <!-- <inertia-link class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="route('users.edit', $page.props.auth.user.id)">My Profile</inertia-link>
-                <inertia-link class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="route('users')">Manage Users</inertia-link>
-                <inertia-link class="block px-6 py-2 hover:bg-indigo-500 hover:text-white w-full text-left" :href="route('logout')" method="post" as="button">Logout</inertia-link> -->
-                  </div>
-                </dropdown>
+
               </div>
+
+              <dropdown class="mt-1 ml-8" placement="bottom-end">
+
+              </dropdown>
+
             </div>
           </div>
 
-          <article>
+          <div class="md:flex md:flex-grow md:overflow-hidden">
+          <div class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto" scroll-region>
+            <flashcard></flashcard>
             <slot />
-          </article>
+          </div>
+          </div>
+<!--          <article>-->
+<!--           -->
+<!--          </article>-->
         </div>
       </div>
     </div>
@@ -82,6 +58,7 @@
 import axios from "axios";
 import Dropdown from "../Shared/Dropdown";
 import Icon from "../Shared/Icon";
+import Flashcard from "./Flashcard";
 export default {
   name: "Layout",
   data() {
@@ -114,6 +91,7 @@ export default {
     this.searchResult = this.$route.query.q;
   },
   components: {
+    Flashcard,
     Dropdown,
     Icon,
   },

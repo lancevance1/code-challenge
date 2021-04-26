@@ -11,10 +11,11 @@ class MediaRequest extends FormRequest
      *
      * @return bool
      */
-    // public function authorize()
-    // {
-    //     return auth()->check();
-    // }
+     public function authorize()
+     {
+//         return auth()->check();
+         return true;
+     }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,9 +25,9 @@ class MediaRequest extends FormRequest
     public function rules()
     {
         return [
-            "imageId" => 'required',
-            "title" => 'required|min:3|max:50',
-            "altText" => 'nullable',
+            "imageId" => 'required|string',
+            "title" => 'string|nullable',
+            "altText" => 'string|nullable',
         ];
     }
 }

@@ -1,9 +1,8 @@
 <template>
-  <layout title="Welcome">
 
-    <div class="py-4 mx-auto">
 
-      <image-card :inputName="imageId"></image-card>
+    <div class="py-12 mx-auto">
+
       <form @submit="onSubmit">
         <!--        <h2 class="text-2xl font-bold">Add an image</h2>-->
         <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
@@ -20,7 +19,7 @@
             <!--              />-->
             <!--            </label>-->
             <!--            <img :src="inputName.urls.regular"/>-->
-
+            {{inputName.id}}
             <label for="title" class="block">
               <span class="text-gray-700">Title</span>
               <input
@@ -54,58 +53,53 @@
       </form>
     </div>
 
-  </layout>
 </template>
 
 
 <script>
 import Layout from '../Shared/Layout.vue';
 import axios from "axios";
-import imageCard from "../Shared/ImageCard"
 
 export default {
-  name: "addImage",
+  name:"image",
 
   data() {
     return {
 
-
-      // ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',
       form: {
         title: null,
         altText: null,
         imageId: null,
+
       },
-      hideLoading: false,
-      imageId: null,
     }
   },
   props: {
     inputName: {},
 
-
+    imageId: null,
   },
   components: {
     // Using a render function
     layout: (h, page) => h(Layout, [page]),
-    imageCard
+
   },
   created() {
-    console.log(this.$route.query.imageId);
-    this.imageId = this.$route.query.imageId;
+    console.log("aa");
+    console.log(this.inputName.id);
   },
-  mounted() {
+  mounted(){
     console.log("bb");
-
+    console.log(this.inputName.id);
 
   },
   methods: {
-    onSubmit: function (event) {
+    onSubmit: function(event) {
       event.preventDefault();
       // alert(JSON.stringify(this.form));
       //add all selected images
 
-      this.form.imageId = this.imageId;
+      this.form.imageId = this.inputName.id;
       let data = JSON.stringify(this.form);
       console.log(this.$page.props.urls.store);
       console.log(data);
@@ -135,8 +129,6 @@ export default {
             console.log(error.response.data);
           });
     },
-
-
   },
 }
 </script>

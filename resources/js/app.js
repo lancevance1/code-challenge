@@ -5,15 +5,17 @@ import MediaComponent from "./components/MediaComponent";
 import MediaItemComponent from "./components/MediaItemComponent";
 import search from "./Pages/search";
 import PortalVue from 'portal-vue'
+import VueLazyload from 'vue-lazyload'
+import { InertiaProgress } from '@inertiajs/progress'
+import loading from './Shared/Loading'
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal)
+Vue.use(loading)
 // import { ZiggyVue } from 'ziggy';
 // import { Ziggy } from './ziggy';
 
 // Vue.use(ZiggyVue, Ziggy);
-
-
-import VueLazyload from 'vue-lazyload'
-import { InertiaProgress } from '@inertiajs/progress'
-
 
 
 Vue.use(VueLazyload)
@@ -64,10 +66,7 @@ InertiaProgress.init({
 const el = document.getElementById('app')
 
 
-
-
 new Vue(
-  
   {
     render: h => h(App, {
       props: {
@@ -75,6 +74,5 @@ new Vue(
         resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
       },
     }),
-    router
-    
+    router,
   }).$mount(el)

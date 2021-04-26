@@ -3,24 +3,24 @@
 <div>
 
 
-  <button type="button" @click="show = true">
-    <slot />
-    <portal v-if="show" to="dropdown">
-      <div>
-        <div
-          style="position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 99998; background: black; opacity: .2"
-          @click="show = false"
-        />
-        <div
-          ref="dropdown"
-          style="position: absolute; z-index: 99999;"
-          @click.stop="show = autoClose ? false : true"
-        >
-          <slot name="dropdown" />
-        </div>
-      </div>
-    </portal>
-  </button>
+<!--  <button type="button" @click="show = true">-->
+<!--    <slot />-->
+<!--    <portal v-if="show" to="dropdown">-->
+<!--      <div>-->
+<!--        <div-->
+<!--          style="position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 99998; background: black; opacity: .2"-->
+<!--          @click="show = false"-->
+<!--        />-->
+<!--        <div-->
+<!--          ref="dropdown"-->
+<!--          style="position: absolute; z-index: 99999;"-->
+<!--          @click.stop="show = autoClose ? false : true"-->
+<!--        >-->
+<!--          <slot name="dropdown" />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </portal>-->
+<!--  </button>-->
 
   <popper
     trigger="clickToOpen"
@@ -29,11 +29,11 @@
       modifiers: { offset: { offset: '0,10px' } }
     }">
     <div class="popper">
-      Popper Content
+      <LoginMenu></LoginMenu>
     </div>
  
     <button slot="reference">
-      Reference Element
+      Foo Bar login
     </button>
   </popper>
 </div>
@@ -43,7 +43,8 @@
 // esm
 import { createPopper } from "@popperjs/core";
 import Popper from 'vue-popperjs';
-  import 'vue-popperjs/dist/vue-popper.css';  
+  import 'vue-popperjs/dist/vue-popper.css';
+import LoginMenu from "./LoginMenu";
 
 export default {
   props: {
@@ -78,7 +79,9 @@ export default {
     },
   },
   components: {
-      'popper': Popper
+    LoginMenu,
+      'popper': Popper,
+
     },
   mounted() {
     document.addEventListener("keydown", (e) => {
