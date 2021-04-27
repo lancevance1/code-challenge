@@ -42,6 +42,11 @@ class MediaRepository implements MediaRepositoryInterface
           'imageId' => $request->imageId,
           'title' => $request->title,
           'altText' => $request->altText,
+            'url_raw' => $request->url_raw,
+            'url_full' => $request->url_full,
+            'url_regular' => $request->url_regular,
+            'url_small' => $request->url_small,
+            'url_thumb' => $request->url_thumb,
             
         ]);
         

@@ -10,42 +10,42 @@ use App\Models\Media;
 use App\Repositories\MediaRepository;
 class MediaController extends Controller
 {
-    private $mediaRepository;
+    private MediaRepository $mediaRepository;
   
    public function __construct(MediaRepository $mediaRepository)
    {
        $this->mediaRepository = $mediaRepository;
    }
 
-    public function index()
+    public function index(): MediaCollection
     {
         $result = $this->mediaRepository->index();
 
         return new MediaCollection($result);
     }
 
-    public function store(MediaRequest $request)
+    public function store(MediaRequest $request): MediaResource
     {
         $result = $this->mediaRepository->store($request);
 
         return new MediaResource($result);
     }
 
-    public function show(Media $medium)
+    public function show(Media $medium): MediaResource
     {
         $result = $this->mediaRepository->show($medium);
 
         return new MediaResource($result);
     }
 
-    public function update(MediaRequest $request, Media $medium)
+    public function update(MediaRequest $request, Media $medium): MediaResource
     {
         $result = $this->mediaRepository->update($request, $medium);
     
         return new MediaResource($result);
     }
 
-    public function destroy(Media $medium)
+    public function destroy(Media $medium): \Illuminate\Http\JsonResponse
     {
         $result = $this->mediaRepository->destroy($medium);
 

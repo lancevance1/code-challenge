@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Response;
 
 class UnsplashController extends Controller
 {
-    public function search(UnsplashSearchRequest $request)
+    public function search(UnsplashSearchRequest $request): \Illuminate\Http\JsonResponse
     {
         $response = Http::get('https://api.unsplash.com/search/photos', [
             'client_id' => config('unsplash.ACCESS_KEY'),
@@ -27,7 +27,7 @@ class UnsplashController extends Controller
     }
 
 
-    public function show(UnsplashRequest $request)
+    public function show(UnsplashRequest $request): \Illuminate\Http\JsonResponse
     {
 
         $response = Http::get('https://api.unsplash.com/photos/' . $request->imageId, [

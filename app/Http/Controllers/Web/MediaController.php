@@ -11,7 +11,7 @@ use Inertia\Inertia;
 
 class MediaController extends Controller
 {
-    public function index()
+    public function index(): \Inertia\Response
     {
         return Inertia::render('welcome', [
             'urls' => [
@@ -46,7 +46,7 @@ class MediaController extends Controller
 
 
 
-    public function create()
+    public function create(): \Inertia\Response
     {
         return Inertia::render('addImage', [
             'urls' => [

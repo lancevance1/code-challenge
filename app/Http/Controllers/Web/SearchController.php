@@ -13,7 +13,7 @@ class SearchController extends Controller
 {
     
 
-    public function index()
+    public function index(): \Inertia\Response
     {
         return Inertia::render('search', [
             'urls' => [
@@ -31,6 +31,11 @@ class SearchController extends Controller
                     'imageId' => $media->imageId,
                     'title' => $media->title,
                     'altText' => $media->altText,
+                    'url_raw' => $media->url_raw,
+                    'url_full' => $media->url_full,
+                    'url_regular' => $media->url_regular,
+                    'url_small' => $media->url_small,
+                    'url_thumb' => $media->url_thumb,
                 ];
             }),
         
