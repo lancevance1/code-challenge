@@ -15,8 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Inertia::share('access_key', config('unsplash.ACCESS_KEY'));
-        Inertia::share('search_url', config('unsplash.search_url'));
+        //
     }
 
     /**

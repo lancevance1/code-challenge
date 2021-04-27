@@ -1,14 +1,13 @@
 <template>
   <div>
     <loading v-if="show"></loading>
-    <img :src="imageSrc"/>
+    <img :src="imageSrc" />
   </div>
-
 </template>
 
 <script>
 import axios from "axios";
-import loading from "../Shared/Loading"
+import loading from "../Shared/Loading";
 
 export default {
   name: "ImageCard",
@@ -17,61 +16,62 @@ export default {
       imageSrc: null,
       imageUrls: {},
       show: false,
-      urlUnsplash: 'https://api.unsplash.com',
-      urlUnsplashPhotos: '/photos',
       responseResults: [],
-    }
-
+      urls: {
+        raw: String,
+        full: String,
+        regular: String,
+        small: String,
+        thumb: String,
+      },
+    };
   },
   props: {
     inputName: null,
   },
   components: {
-    loading
+    loading,
   },
   mounted() {
+    console.log('test: '+this.inputName)
     this.loadImage();
-    // console.log('appName');
-    // console.log(this.$page.props.appName);
   },
-  computed: {
-    unsplash_key() {
-      return this.$page.props.access_key;
-    },
-  },
+  // computed: {
+  //   unsplash_key() {
+  //     return this.$page.props.access_key;
+  //   },
+  // },
   methods: {
-    loadImage: function (e) {
+    loadImage: function(e) {
       this.show = true;
 
-      console.log(this.urlUnsplashPhotos + '/' + this.inputName)
-      axios.request({
-        url: this.urlUnsplashPhotos + '/' + this.inputName,
-        method: 'get',
-        baseURL: this.urlUnsplash,
-        headers: {
-          'Authorization': ' Client-ID '+ this.unsplash_key
-        },
-
-      })
-          .then((response) => {
-            this.show = false;
-            this.responseResults = response.data;
-            this.imageSrc = this.responseResults.urls.regular;
-            // console.log(this.responseResults);
-
-          })
-          .catch((error) => {
-                console.log(error.response.data)
-                this.show = false;
-              }
-          );
+      console.log(this.urlUnsplashPhotos + "/" + this.inputName);
+      axios
+        .request({
+          url: this.$page.props.unsplashGetImage,
+          method: "get",
+          params: {
+            imageId: this.inputName,
+          },
+        })
+        .then((response) => {
+          this.show = false;
+          this.responseResults = response.data;
+          this.imageSrc = this.responseResults.urls.regular;
+          this.urls = this.responseResults.urls;
+          this.outputMethod();
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          this.show = false;
+        });
     },
-  }
-}
 
-
+    outputMethod: function() {
+      this.$emit("childByValue", this.urls);
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

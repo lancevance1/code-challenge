@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -38,21 +37,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            // Synchronously
-            'appName' => config('app.name'),
+            'search_url' => config('unsplash.search_url'),
+            'access_key' => config('unsplash.ACCESS_KEY'),
+            'unsplashSearch' => route('unsplash_search'),
+            'unsplashGetImage' => route('unsplash_image'),
+             // Synchronously
+             'appName' => config('app.name'),
 
-            'access_key'=>config('unsplash.ACCESS_KEY'),
-
-            // Lazily
-            'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'email')
-                : null,
-
-            'flash' => [
-                'message' => fn () => $request->session()->get('message')
-            ],
-
-            'errors' => Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [],
         ]);
     }
 }

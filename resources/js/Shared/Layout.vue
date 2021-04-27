@@ -1,8 +1,6 @@
 <template>
   <main>
-    <header>
-
-    </header>
+    <header></header>
 
     <div class="container mx-auto ">
       <div class="antialiased text-gray-900 px-6 ">
@@ -12,7 +10,7 @@
             <div class="mt-4 flex space-x-4">
               <inertia-link class="text-lg " href="/">Home</inertia-link>
               <inertia-link class="text-lg " href="/media">Media</inertia-link>
-<!--              <inertia-link class="text-lg " href="/media/create">Add</inertia-link>-->
+              <!--              <inertia-link class="text-lg " href="/media/create">Add</inertia-link>-->
 
               <div class="flex border-grey-light border w-1/2">
                 <input
@@ -28,26 +26,21 @@
                 >
                   Search
                 </button>
-
-
               </div>
 
-              <dropdown class="mt-1 ml-8" placement="bottom-end">
-
-              </dropdown>
-
+              <dropdown class="mt-1 ml-8" placement="bottom-end"> </dropdown>
             </div>
           </div>
 
           <div class="md:flex md:flex-grow md:overflow-hidden">
-          <div class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto" scroll-region>
-            <flashcard></flashcard>
-            <slot />
+            <div
+              class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
+              scroll-region
+            >
+              <flashcard></flashcard>
+              <slot />
+            </div>
           </div>
-          </div>
-<!--          <article>-->
-<!--           -->
-<!--          </article>-->
         </div>
       </div>
     </div>
@@ -55,7 +48,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import Dropdown from "../Shared/Dropdown";
 import Icon from "../Shared/Icon";
 import Flashcard from "./Flashcard";
@@ -64,7 +56,6 @@ export default {
   data() {
     return {
       searchResult: "",
-      queryTerm: "",
     };
   },
   props: {
@@ -76,18 +67,14 @@ export default {
       handler(title) {
         document.title = title;
       },
-      $route(to, from) {
-        console.log(to);
-        console.log(from);
-      },
     },
 
-    //  searchResult(newVal, oldVal) {
-    //     console.log(`searchResult changed: ${newVal}`);
-    //     console.log(this.searchResult);
-    //   }
+    searchResult(newVal, oldVal) {
+      console.log(`searchResult changed: ${newVal}`);
+      console.log(this.searchResult);
+    },
   },
-  mounted() {
+  created() {
     this.searchResult = this.$route.query.q;
   },
   components: {
@@ -97,11 +84,18 @@ export default {
   },
   methods: {
     goToSearch: function(e) {
-      this.queryTerm = e;
-      this.$router.push(
-        { path: "search", query: { q: this.searchResult } },
-        () => this.$router.go(0)
-      );
+      // this.$router.push(
+      //   { path: "search", query: { q: this.searchResult } },
+
+      // );
+      this.searchResult = e;
+
+      if (
+        typeof this.searchResult !== "undefined" &&
+        this.searchResult.length != 0
+      ) {
+        window.location.href = "/search?q=" + e;
+      }
     },
   },
 };

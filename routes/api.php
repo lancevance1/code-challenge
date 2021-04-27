@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UnsplashController;
 use Illuminate\Http\Request;
 
 /*
@@ -20,3 +21,6 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['api'], 'as' => 'api.'], function () {
     Route::apiResource('media', 'Api\MediaController');
 });
+Route::get('unsplash-search', [UnsplashController::class, 'search'])->name('unsplash_search');
+Route::get('unsplash-image', [UnsplashController::class, 'show'])->name('unsplash_image');
+
