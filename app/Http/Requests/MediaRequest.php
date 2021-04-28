@@ -28,6 +28,9 @@ class MediaRequest extends FormRequest
             "imageId" => 'required|string',
             "title" => 'string|nullable',
             "altText" => 'string|nullable',
+            "width" => 'numeric|required',
+            "height" => 'numeric|required',
+
         ];
     }
 }

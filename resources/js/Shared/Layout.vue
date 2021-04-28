@@ -6,7 +6,9 @@
       <div class="antialiased text-gray-900 px-6 ">
         <div class="max-w-xl mx-auto py-1 divide-y md:max-w-4xl xl:max-w-full ">
           <div class="py-8">
+            <inertia-link class="text-lg " href="/">
             <h1 class="text-4xl font-bold">Media Library</h1>
+            </inertia-link>
             <div class="mt-4 flex space-x-4">
               <inertia-link class="text-lg " href="/">Home</inertia-link>
               <inertia-link class="text-lg " href="/media">Media</inertia-link>

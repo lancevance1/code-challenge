@@ -25,6 +25,10 @@ export default {
     label: String,
     error: String,
   },
+  mounted() {
+  console.log("textinput")
+
+    },
   methods: {
     focus() {
       this.$refs.input.focus()

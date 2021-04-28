@@ -24,6 +24,9 @@ export default {
         small: String,
         thumb: String,
       },
+      height:null,
+      width:null,
+      outputData:{},
     };
   },
   props: {
@@ -34,6 +37,7 @@ export default {
   },
   mounted() {
     console.log('test: '+this.inputName)
+
     this.loadImage();
   },
   // computed: {
@@ -59,16 +63,26 @@ export default {
           this.responseResults = response.data;
           this.imageSrc = this.responseResults.urls.regular;
           this.urls = this.responseResults.urls;
+          this.height = this.responseResults.height;
+          this.width = this.responseResults.width;
+
+          this.outputData["urls"]=this.urls;
+
+          this.outputData["height"]=this.height
+          this.outputData["width"]=this.width;
           this.outputMethod();
+
         })
         .catch((error) => {
-          console.log(error.response.data);
+          // console.log(error.response.data);
           this.show = false;
         });
     },
 
     outputMethod: function() {
-      this.$emit("childByValue", this.urls);
+
+      this.$emit("childByValue", this.outputData);
+
     },
   },
 };

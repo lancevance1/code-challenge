@@ -11,13 +11,13 @@
     <!-- each component is wrapped by a waterfall slot -->
     <waterfall-slot
         v-for="(item, index) in items"
-        :width="item.width||300"
-        :height="item.height||300"
+        :width="item.width"
+        :height="item.height"
         :order="index"
-        :key="item.id"
+        :key="item.imageId"
     >
       <div class="container mx-auto py-4">
-        <img :src="item.urls.regular||item.url_regular" :alt="item.altText" @click="goToCreate(item.id)"/>
+        <img :src="item.urls.regular" :alt="item.altText" @click="goToImage(item)"/>
       </div>
     </waterfall-slot>
   </waterfall>
@@ -41,17 +41,21 @@ data(){
     line: "v",
   }
 },
-  methods:{
-    goToCreate(e) {
-      console.log(e)
-      window.location.href = "media/create?imageId=" + e;
-    },
-
-
+  mounted() {
+    console.log("this.$router"+this.$router);
   },
-
-
-
+  methods:{
+    goToImage(e) {
+      // this.$router.push({path: 'create', query: { imageId: e.imageId }} );
+      let tmp = window.location.pathname.split('/')[1];
+      console.log(window.location.pathname.split('/')[1])
+      if(tmp==="search"){
+        window.location.href = "media/create?imageId=" + e.imageId;
+      }else if(tmp==="media"){
+        window.location.href = "media/"+e.id+"/edit";
+      }
+    },
+  },
 }
 </script>
 

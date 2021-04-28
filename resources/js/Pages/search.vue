@@ -118,6 +118,7 @@ export default {
             let i = 0;
             Array.from(this.responseResults.results).forEach((e) => {
               this.item = e;
+              this.item["imageId"] = e.id;
               this.item["index"] = i;
               i++;
               this.items.push(this.item);

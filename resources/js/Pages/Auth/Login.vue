@@ -1,7 +1,7 @@
 <template>
-  <div class="p-6 bg-indigo-800 min-h-screen flex justify-center items-center">
+  <div class="p-6  min-h-screen flex justify-center items-center">
     <div class="w-full max-w-md">
-      <logo class="block mx-auto w-full max-w-xs fill-white" height="50" />
+<!--      <logo class="block mx-auto w-full max-w-xs fill-white" height="50" />-->
 
       <form class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="login">
         <div class="px-10 py-12">
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import Logo from '../../Shared/Logo'
 import TextInput from '../../Shared/TextInput'
 import LoadingButton from '../../Shared/LoadingButton'
 export default {
@@ -32,14 +31,13 @@ export default {
   metaInfo: { title: 'Login' },
   components: {
     LoadingButton,
-    Logo,
     TextInput,
   },
   data() {
     return {
       form: this.$inertia.form({
-        email: 'johndoe@example.com',
-        password: 'secret',
+        email: 'admin@test.com',
+        password: '',
         remember: false,
       }),
     }
@@ -51,9 +49,12 @@ export default {
             ...data,
             remember: data.remember ? 'on' : '',
           }))
-          .post(this.route('login.attempt'))
+          .post(this.$page.props.loginAttempt)
     },
   },
+  mounted() {
+
+  }
 }
 </script>
 

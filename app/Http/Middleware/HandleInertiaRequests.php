@@ -40,9 +40,22 @@ class HandleInertiaRequests extends Middleware
             'search_url' => config('unsplash.search_url'),
             'access_key' => config('unsplash.ACCESS_KEY'),
             'unsplashSearch' => route('unsplash_search'),
+            'loginAttempt' => route('login.attempt'),
+            'logout' => route('logout'),
             'unsplashGetImage' => route('unsplash_image'),
              // Synchronously
              'appName' => config('app.name'),
+
+            'auth' => function () use ($request) {
+                return [
+                    'user' => $request->user() ? [
+                        'id' => $request->user()->id,
+                        'email' => $request->user()->email,
+                        'name' => $request->user()->name,
+
+                    ] : null,
+                ];
+            },
 
         ]);
     }

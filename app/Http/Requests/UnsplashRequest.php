@@ -24,7 +24,7 @@ class UnsplashRequest extends FormRequest
     public function rules()
     {
         return [
-            'imageId' => 'required|min:1|string',
+            'imageId' => 'nullable|string',
             
 
         ];

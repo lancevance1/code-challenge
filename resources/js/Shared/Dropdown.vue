@@ -33,7 +33,7 @@
     </div>
  
     <button slot="reference">
-      Foo Bar login
+     <div class="text-lg ">{{ $page.props.auth.user.name||'Guest' }}</div>
     </button>
   </popper>
 </div>

@@ -18,15 +18,17 @@ mix.js('resources/js/app.js', 'public/js')
    .options({
       processCssUrls: false,
       postCss: [ tailwindcss('./tailwind.config.js') ],
-  });
+  })
+    .webpackConfig(require('./webpack.config'));
 
-//   mix.webpackConfig({
-//    resolve: {
-//        alias: {
-//            ziggy: path.resolve('vendor/tightenco/ziggy/src/js/route.js'),
-//        },
-//    },
-// });
+  mix.webpackConfig({
+   resolve: {
+       alias: {
+           '@': path.resolve('resources/js'),
+           ziggy: path.resolve('vendor/tightenco/ziggy/dist'),
+       },
+   },
+});
 
 
   

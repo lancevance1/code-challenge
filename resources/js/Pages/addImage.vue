@@ -7,17 +7,6 @@
         <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
         <div class="mt-8 max-w-md">
           <div class="grid grid-cols-1 gap-6">
-            <!--            <label for="imageId" class="block">-->
-            <!--              <span class="text-gray-700">ImageId</span>-->
-            <!--              <input-->
-            <!--                id="imageId"-->
-            <!--                v-model="form.imageId"-->
-            <!--                type="text"-->
-            <!--                class="mt-1 block w-full"-->
-            <!--                placeholder=""-->
-            <!--              />-->
-            <!--            </label>-->
-            <!--            <img :src="inputName.urls.regular"/>-->
 
             <label for="title" class="block">
               <span class="text-gray-700">Title</span>
@@ -64,20 +53,24 @@ export default {
 
   data() {
     return {
-      // ACCESS_KEY: 'wu6uBElgkanxZD7v3iT1Ekqm9ejk8vsLdBWKcXeIwaI',
       form: {
         title: null,
         altText: null,
         imageId: null,
-        url_raw: String,
-        url_full: String,
-        url_regular: String,
-        url_small: String,
-        url_thumb: String,
+        // url_raw: String,
+        // url_full: String,
+        // url_regular: String,
+        // url_small: String,
+        // url_thumb: String,
+        urls:{},
+        width:null,
+        height:null,
       },
       urls:{},
       hideLoading: false,
       imageId: null,
+      height:null,
+      width:null,
     };
   },
   props: {
@@ -93,7 +86,7 @@ export default {
     this.imageId = this.$route.query.imageId;
   },
   mounted() {
-    console.log("bb");
+
   },
   methods: {
     onSubmit: function(event) {
@@ -101,13 +94,12 @@ export default {
       // alert(JSON.stringify(this.form));
       //add all selected images
 
+      this.form.height = this.height;
+
+      this.form.width = this.width;
       this.form.imageId = this.imageId;
+      this.form.urls = this.urls;
       this.form.url_raw = this.urls.raw;
-      console.log(this.form.url_raw);
-      this.form.url_full = this.urls.full;
-      this.form.url_regular = this.urls.regular;
-      this.form.url_small = this.urls.small;
-      this.form.url_thumb = this.urls.thumb;
       let data = JSON.stringify(this.form);
       console.log(this.$page.props.urls.store);
       console.log(data);
@@ -130,7 +122,6 @@ export default {
           }
         })
         .catch((error) => {
-          // console.log(error.response);
           if (error.response.status === 422) {
             alert(error.response.data.message);
           }
@@ -138,8 +129,15 @@ export default {
         });
     },
     getUrls: function(childValue) {
-      this.urls = childValue;
+
+      // console.log("child: "+childValue.width)
+      this.urls = childValue.urls;
+      this.width = childValue.width;
+      this.height = childValue.height;
+
     },
   },
 };
 </script>
+
+

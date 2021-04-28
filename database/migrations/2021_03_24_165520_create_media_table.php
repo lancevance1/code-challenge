@@ -17,13 +17,11 @@ class CreateMediaTable extends Migration
             $table->bigIncrements('id');
             // $table->uuid('id');
             $table->string('imageId');
-            $table->longText('url_raw');
-            $table->longText('url_full');
-            $table->longText('url_regular');
-            $table->longText('url_small');
-            $table->longText('url_thumb');
+            $table->json('urls');
             $table->string('title')->nullable();
             $table->string('altText')->nullable();
+            $table->integer('width');
+            $table->integer('height');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')->on('users');

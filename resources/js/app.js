@@ -8,9 +8,10 @@ import PortalVue from 'portal-vue'
 import VueLazyload from 'vue-lazyload'
 import { InertiaProgress } from '@inertiajs/progress'
 import loading from './Shared/Loading'
-import VModal from 'vue-js-modal'
 
-Vue.use(VModal)
+
+
+
 Vue.use(loading)
 // import { ZiggyVue } from 'ziggy';
 // import { Ziggy } from './ziggy';
