@@ -1,6 +1,6 @@
 <template>
   <layout title="Welcome">
-    <h1>Welcome foo bar {{ $page.props.user }}</h1>
+    <h1>Welcome User: {{ $page.props.auth.user.name }}</h1>
     <!-- <inertia-link :href="$route('media.create')">Create User</inertia-link> -->
 <!--    <p>-->
 <!--      Hello {{ $page.props.user }}, welcome {{ $page.props.media }} to your-->
@@ -48,7 +48,7 @@ export default {
       currentPage: 1,
       total: 0,
       totalPages: 1,
-
+isBottom:false,
     };
   },
   created() {
@@ -97,12 +97,14 @@ export default {
       }
     },
     getData: function () {
-      if (true) {
+      if (!this.isBottom) {
+        this.isBottom=true;
+        console.log(this.isBottom)
         return alert("no more images");
         //todo session
+
+
       }
-      this.currentPage++;
-      this.searchImage(this.searchResult, true);
     },
     itemsReset: function () {
       this.items = [];

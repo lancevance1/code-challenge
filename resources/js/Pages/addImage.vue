@@ -57,11 +57,6 @@ export default {
         title: null,
         altText: null,
         imageId: null,
-        // url_raw: String,
-        // url_full: String,
-        // url_regular: String,
-        // url_small: String,
-        // url_thumb: String,
         urls:{},
         width:null,
         height:null,
@@ -124,6 +119,8 @@ export default {
         .catch((error) => {
           if (error.response.status === 422) {
             alert(error.response.data.message);
+          }else if(error.response.status === 401){
+            alert("please login")
           }
           console.log(error.response.data);
         });

@@ -30,7 +30,10 @@
                 </button>
               </div>
 
-              <dropdown class="mt-1 ml-8" placement="bottom-end"> </dropdown>
+              <div>{{$page.props.auth}}</div>
+
+              <dropdown v-if="isLogin" class="mt-1 ml-8" placement="bottom-end"> </dropdown>
+              <inertia-link v-if="!isLogin" class="text-lg " href="/login">Log in</inertia-link>
             </div>
           </div>
 
@@ -58,6 +61,7 @@ export default {
   data() {
     return {
       searchResult: "",
+      isLogin:false,
     };
   },
   props: {
@@ -78,6 +82,10 @@ export default {
   },
   created() {
     this.searchResult = this.$route.query.q;
+    if(this.$page.props.auth.user !== null){
+      this.isLogin = true;
+    }
+
   },
   components: {
     Flashcard,
