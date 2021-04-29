@@ -32,9 +32,6 @@ class MediaRepository implements MediaRepositoryInterface
 
     public function update($request, $medium)
     {
-
-        // $medium = $request->validated();
-
         // return boolean
         $medium->update([
             'imageId' => $request->imageId,
@@ -44,7 +41,6 @@ class MediaRepository implements MediaRepositoryInterface
             'width' => $request->width,
             'height' => $request->height,
         ]);
-
 
         return $medium->fresh();
     }

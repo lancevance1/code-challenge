@@ -25,8 +25,6 @@ class UnsplashRequest extends FormRequest
     {
         return [
             'imageId' => 'nullable|string',
-            
-
         ];
     }
 }

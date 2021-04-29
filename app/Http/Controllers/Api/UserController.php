@@ -47,8 +47,6 @@ class UserController extends Controller
         $result = $this->userRepository->update($request, $user);
 
         // return new UserResource($result);
-        //  dd(Redirect::back()->with('success', 'User updated.'));
-        // session()->put('success','User updated.');
          return Redirect::back()->with('success', 'User updated.');
          
     }

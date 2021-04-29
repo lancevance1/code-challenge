@@ -19,9 +19,6 @@ class UserController extends Controller
                 'update' => route('api.users.update', ':id'),
                 'destroy' => route('api.users.destroy', ':id')
             ],
-            
-
-
         ]);
     }
 }

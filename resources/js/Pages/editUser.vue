@@ -2,11 +2,7 @@
   <div class="">
     <div class="mb-8 flex justify-start max-w-3xl">
       <h1 class="font-bold text-3xl">
-
         <span class="text-blue-500 font-medium">Welcome {{ $page.props.auth.user.name}}</span>
-       
-
-
       </h1>
     </div>
 
@@ -18,7 +14,6 @@
           <text-input v-model="form.password" :error="form.errors.password" class="pr-6 pb-8 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" />
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
-<!--          <button v-if="!user.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete User</button>-->
           <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Update User</loading-button>
         </div>
       </form>
@@ -37,21 +32,13 @@ export default {
   name:'editUser',
   metaInfo() {
     return {
-      // title: `${this.form.name}`,
     }
   },
   components: {
-
     LoadingButton,
     TextInput,
-
   },
   layout: Layout,
-  props: {
-    
-
-  },
-  // remember: 'form',
   data() {
     return {
       form: this.$inertia.form({
@@ -63,26 +50,11 @@ export default {
     }
   },
   created() {
-// console.log(this.$page.props.urls.update.replace(":id", this.$page.props.auth.user.id))
-
   },
   methods: {
     update() {
-      console.log(this.form)
       this.form.post(this.$page.props.urls.update.replace(":id", this.$page.props.auth.user.id)
-        
       )
-      // console.log(this.$page.props.flash)
-    },
-    destroy() {
-      // if (confirm('Are you sure you want to delete this user?')) {
-      //   this.$inertia.delete(this.route('users.destroy', this.user.id))
-      // }
-    },
-    restore() {
-      // if (confirm('Are you sure you want to restore this user?')) {
-      //   this.$inertia.put(this.route('users.restore', this.user.id))
-      // }
     },
   },
 }

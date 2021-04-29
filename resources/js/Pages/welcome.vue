@@ -55,7 +55,6 @@ export default {
   methods: {
     loadImages: function () {
       this.hideLoading = true;
-
       axios
         .request({
           url: this.$page.props.urls.index,
@@ -63,18 +62,14 @@ export default {
         })
         .then((response) => {
           this.responseResults = response.data.data;
-
           this.total = response.data.length;
-
           let i = 0;
           Array.from(this.responseResults).forEach((e) => {
             this.item = e;
             this.item["index"] = i;
             i++;
-
             this.items.push(this.item);
           });
-
           this.hideLoading = false;
         })
         .catch((error) => {

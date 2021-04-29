@@ -14,7 +14,6 @@
               <li>
                 <dropdown
                   v-if="isLogin"
-                  class="mt-1 ml-8"
                   placement="bottom-end"
                 >
                 </dropdown>
@@ -71,7 +70,6 @@
 
 <script>
 import Dropdown from "../Shared/Dropdown";
-
 import Flashcard from "./Flashcard";
 export default {
   name: "Layout",
@@ -91,11 +89,6 @@ export default {
         document.title = title;
       },
     },
-
-    searchResult(newVal, oldVal) {
-      console.log(`searchResult changed: ${newVal}`);
-      console.log(this.searchResult);
-    },
   },
   created() {
     this.searchResult = this.$route.query.q;
@@ -109,15 +102,10 @@ export default {
   },
   methods: {
     goToSearch: function (e) {
-      // this.$router.push(
-      //   { path: "search", query: { q: this.searchResult } },
-
-      // );
       this.searchResult = e;
-
       if (
         typeof this.searchResult !== "undefined" &&
-        this.searchResult.length != 0
+        this.searchResult.length !== 0
       ) {
         window.location.href = "/search?q=" + e;
       }

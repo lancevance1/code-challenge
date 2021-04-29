@@ -43,4 +43,4 @@ Route::get('home', [HomeController::class, 'index'])->name('home.index');
 Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
 Route::get('media/{medium}/edit', [MediaController::class, 'edit'])->name('media.edit')->middleware('auth');;
 Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');;
-// Route::get('media', [MediaController::class, 'show'])->name('media.show');
+
