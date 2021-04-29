@@ -1,13 +1,13 @@
 <template>
   <main>
     <header>
-      <div class=" bg-white rounded-lg shadow-xl ">
+      <div class="bg-white rounded-lg shadow-xl">
         <h1 class="pt-6 text-4xl font-bold text-center">
           <inertia-link class="" href="/">Media Library </inertia-link>
         </h1>
 
         <nav
-          class="relative flex flex-wrap items-center justify-between px-2 py-2"
+          class="nav"
         >
           <div class="container px-6 mx-auto">
             <ul class="nav-ul">
@@ -38,8 +38,8 @@
                     v-model="searchResult"
                     @keyup.enter="goToSearch(searchResult)"
                   />
-                  <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  <button 
+                    class="button"
                     v-on:click="goToSearch(searchResult)"
                   >
                     Search
@@ -59,9 +59,8 @@
             class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
             scroll-region
           >
-          
-            <flashcard ></flashcard>
-          
+            <flashcard></flashcard>
+
             <slot />
           </div>
         </div>
@@ -134,5 +133,11 @@ export default {
     @apply flex items-center space-x-4;
   }
   @apply flex flex-col lg:flex-row list-none space-x-4;
+}
+.button {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
+}
+.nav{
+  @apply relative flex flex-wrap items-center justify-between px-2 py-2
 }
 </style>

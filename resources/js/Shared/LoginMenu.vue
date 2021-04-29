@@ -28,7 +28,7 @@ export default {
 .button {
   @apply block px-6 py-2 hover:bg-gray-100  text-lg;
 }
-.menu{
-  @apply mt-2 py-2 shadow-xl bg-white rounded text-sm
+.menu {
+  @apply mt-2 py-2 shadow-xl bg-white rounded text-sm;
 }
 </style>

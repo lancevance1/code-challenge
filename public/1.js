@@ -128,6 +128,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TextInput",
   inheritAttrs: false,
@@ -140,14 +149,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     type: {
       type: String,
-      "default": 'text'
+      "default": "text"
     },
     value: String,
     label: String,
     error: String
-  },
-  mounted: function mounted() {
-    console.log("textinput");
   },
   methods: {
     focus: function focus() {

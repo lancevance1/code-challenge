@@ -55,7 +55,6 @@ export default {
   },
   mounted() {
     this.searchResult = this.$route.query.q;
-    console.log("props", this.$page.props.appName);
     if (this.$route.query.q !== "") {
       this.searchImage(this.searchResult, false);
     }
@@ -72,7 +71,6 @@ export default {
         this.itemsReset();
       }
       this.queryTerm = e;
-      console.log(typeof e);
       if (typeof e === "undefined") {
         return;
       }
@@ -104,7 +102,6 @@ export default {
           this.hideLoading = false;
         })
         .catch((error) => {
-          console.log(error);
           this.hideLoading = false;
         });
     },

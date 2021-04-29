@@ -1,23 +1,27 @@
 <template>
   <!-- line gap 600 for 3 lines -->
   <waterfall
-      :line="line"
-      :line-gap="600"
-      :min-line-gap="180"
-      :max-line-gap="220"
-      :watch="items"
-      ref="waterfall"
+    :line="line"
+    :line-gap="600"
+    :min-line-gap="180"
+    :max-line-gap="220"
+    :watch="items"
+    ref="waterfall"
   >
     <!-- each component is wrapped by a waterfall slot -->
     <waterfall-slot
-        v-for="(item, index) in items"
-        :width="item.width"
-        :height="item.height"
-        :order="index"
-        :key="item.imageId"
+      v-for="(item, index) in items"
+      :width="item.width"
+      :height="item.height"
+      :order="index"
+      :key="item.imageId"
     >
       <div class="container mx-auto py-4">
-        <img :src="item.urls.regular" :alt="item.altText" @click="goToImage(item)"/>
+        <img
+          :src="item.urls.regular"
+          :alt="item.altText"
+          @click="goToImage(item)"
+        />
       </div>
     </waterfall-slot>
   </waterfall>
@@ -32,33 +36,26 @@ export default {
     Waterfall,
     WaterfallSlot,
   },
-  props:{
-    items:{},
-    searchResult:String,
+  props: {
+    items: {},
+    searchResult: String,
   },
-data(){
-  return{
-    line: "v",
-  }
-},
-  mounted() {
-    console.log("this.$router"+this.$router);
+  data() {
+    return {
+      line: "v",
+    };
   },
-  methods:{
+  methods: {
     goToImage(e) {
-      // this.$router.push({path: 'create', query: { imageId: e.imageId }} );
-      let tmp = window.location.pathname.split('/')[1];
-      console.log(window.location.pathname.split('/')[1])
-      if(tmp==="search"){
+      let tmp = window.location.pathname.split("/")[1];
+      if (tmp === "search") {
         window.location.href = "media/create?imageId=" + e.imageId;
-      }else if(tmp==="media"){
-        window.location.href = "media/"+e.id+"/edit";
+      } else if (tmp === "media") {
+        window.location.href = "media/" + e.id + "/edit";
       }
     },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

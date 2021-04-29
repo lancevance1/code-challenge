@@ -28,12 +28,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -82,25 +76,22 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.hideLoading = true;
-      console.log(this.$page.props.urls.index);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.request({
         url: this.$page.props.urls.index,
         method: "get"
       }).then(function (response) {
         _this.responseResults = response.data.data;
-        console.log(JSON.stringify(response.data.data));
         _this.total = response.data.length;
         var i = 0;
         Array.from(_this.responseResults).forEach(function (e) {
           _this.item = e;
           _this.item["index"] = i;
-          i++; // console.log("item.urls.raw " + this.item.imageId);
+          i++;
 
           _this.items.push(_this.item);
         });
         _this.hideLoading = false;
       })["catch"](function (error) {
-        console.log(error);
         _this.hideLoading = false;
       });
     },
@@ -115,7 +106,6 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       if (!this.isBottom) {
         this.isBottom = true;
-        console.log(this.isBottom);
         return alert("no more images"); //todo session
       }
     },
@@ -123,10 +113,7 @@ __webpack_require__.r(__webpack_exports__);
       this.items = [];
       this.currentPage = 1;
     }
-  } // props: {
-  //   media: [],
-  // },
-
+  }
 });
 
 /***/ }),

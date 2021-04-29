@@ -24,10 +24,10 @@ export default {
         small: String,
         thumb: String,
       },
-      height:null,
-      width:null,
-      outputData:{},
-      isLarge:true,
+      height: null,
+      width: null,
+      outputData: {},
+      isLarge: true,
     };
   },
   props: {
@@ -37,20 +37,11 @@ export default {
     loading,
   },
   mounted() {
-    console.log('test: '+this.inputName)
-
     this.loadImage();
   },
-  // computed: {
-  //   unsplash_key() {
-  //     return this.$page.props.access_key;
-  //   },
-  // },
   methods: {
-    loadImage: function(e) {
+    loadImage: function (e) {
       this.show = true;
-
-      console.log(this.urlUnsplashPhotos + "/" + this.inputName);
       axios
         .request({
           url: this.$page.props.unsplashGetImage,
@@ -67,26 +58,20 @@ export default {
           this.height = this.responseResults.height;
           this.width = this.responseResults.width;
 
-          this.outputData["urls"]=this.urls;
-
-          this.outputData["height"]=this.height
-          this.outputData["width"]=this.width;
+          this.outputData["urls"] = this.urls;
+          this.outputData["height"] = this.height;
+          this.outputData["width"] = this.width;
           this.outputMethod();
-
         })
         .catch((error) => {
-          // console.log(error.response.data);
           this.show = false;
         });
     },
 
-    outputMethod: function() {
-
+    outputMethod: function () {
       this.$emit("childByValue", this.outputData);
-
     },
     changeSrc: function () {
-      console.log(this.isLarge);
       if (this.isLarge) {
         this.imageSrc = this.urls.regular;
         this.isLarge = false;

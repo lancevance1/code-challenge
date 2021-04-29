@@ -1,14 +1,8 @@
 <template>
   <layout title="Welcome">
-    <div class="text-base"> <h1>Welcome User: {{ $page.props.auth.user.name }}</h1></div>
-   
-    <!-- <inertia-link :href="$route('media.create')">Create User</inertia-link> -->
-<!--    <p>-->
-<!--      Hello {{ $page.props.user }}, welcome {{ $page.props.media }} to your-->
-<!--      first Inertia app!-->
-<!--    </p>-->
-
-    <!--    <div class="py-1">Total results: {{ total }}</div>-->
+    <div class="text-base">
+      <h1>Welcome User: {{ $page.props.auth.user.name }}</h1>
+    </div>
 
     <loading v-if="hideLoading"></loading>
 
@@ -49,7 +43,7 @@ export default {
       currentPage: 1,
       total: 0,
       totalPages: 1,
-isBottom:false,
+      isBottom: false,
     };
   },
   created() {
@@ -61,7 +55,7 @@ isBottom:false,
   methods: {
     loadImages: function () {
       this.hideLoading = true;
-      console.log(this.$page.props.urls.index);
+
       axios
         .request({
           url: this.$page.props.urls.index,
@@ -69,7 +63,7 @@ isBottom:false,
         })
         .then((response) => {
           this.responseResults = response.data.data;
-          console.log(JSON.stringify(response.data.data));
+
           this.total = response.data.length;
 
           let i = 0;
@@ -77,14 +71,13 @@ isBottom:false,
             this.item = e;
             this.item["index"] = i;
             i++;
-            // console.log("item.urls.raw " + this.item.imageId);
+
             this.items.push(this.item);
           });
 
           this.hideLoading = false;
         })
         .catch((error) => {
-          console.log(error);
           this.hideLoading = false;
         });
     },
@@ -99,12 +92,10 @@ isBottom:false,
     },
     getData: function () {
       if (!this.isBottom) {
-        this.isBottom=true;
-        console.log(this.isBottom)
+        this.isBottom = true;
+
         return alert("no more images");
         //todo session
-
-
       }
     },
     itemsReset: function () {
@@ -112,9 +103,5 @@ isBottom:false,
       this.currentPage = 1;
     },
   },
-
-  // props: {
-  //   media: [],
-  // },
 };
 </script>
