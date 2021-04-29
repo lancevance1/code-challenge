@@ -33,7 +33,11 @@
     </div>
  
     <button slot="reference">
-     <div class="text-lg ">{{ $page.props.auth.user.name||'Guest' }}</div>
+<!--      {{$page.props.auth.user}}-->
+     <div v-if="$page.props.auth.user!=null" class="text-lg ">{{ $page.props.auth.user.name }}</div>
+      <div v-if="$page.props.auth.user==null" class="text-lg ">
+        <inertia-link class="text-lg " href="/login">Login</inertia-link>
+       </div>
     </button>
   </popper>
 </div>
