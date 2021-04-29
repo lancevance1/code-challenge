@@ -24,13 +24,7 @@ class MediaController extends Controller
 
             // 'create_url' => URL::route('media.create'),
 
-            // 'user' => User::all()->map(function ($user) {
-            //     return [
-            //         'id' => $user->id,
-            //         'name' => $user->name,
-            //         'email' => $user->email,
-            //     ];
-            // }),
+
 
             'media' => Media::all()->map(function ($media) {
                 return [

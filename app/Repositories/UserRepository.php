@@ -16,7 +16,7 @@ class UserRepository implements UserRepositoryInterface
      
     }
 
-    public function create($request){
+    public function store($request){
         return User::create([
             'name' => $request->name,
             'email' => $request->email,

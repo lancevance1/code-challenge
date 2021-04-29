@@ -12,6 +12,8 @@
 */
 
 use App\Http\Controllers\Auth\LoginController;
+
+use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\MediaController;
 use App\Http\Controllers\Web\SearchController;
@@ -35,9 +37,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('search', [SearchController::class, 'index'])->name('search');;
+Route::get('search', [SearchController::class, 'index'])->name('search');
 Route::get('home', [HomeController::class, 'index'])->name('home.index');
- Route::get('media', [MediaController::class, 'index']);
+ Route::get('media', [MediaController::class, 'index'])->middleware('auth');;
 Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
-Route::get('media/{medium}/edit', [MediaController::class, 'edit'])->name('media.edit');
+Route::get('media/{medium}/edit', [MediaController::class, 'edit'])->name('media.edit')->middleware('auth');;
+Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');;
 // Route::get('media', [MediaController::class, 'show'])->name('media.show');
