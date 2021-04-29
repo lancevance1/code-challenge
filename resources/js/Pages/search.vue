@@ -1,32 +1,11 @@
 <template>
   <layout title="Welcome">
-
-    <div class="py-1">Total results: {{ total }}</div>
-
+    <div class="py-1 text-base">Total results: {{ total }}</div>
     <loading v-if="hideLoading"></loading>
-<waterfall-component :items="items" :searchResult="searchResult"></waterfall-component>
-<!--    &lt;!&ndash; line gap 600 for 3 lines &ndash;&gt;-->
-<!--    <waterfall-->
-<!--        :line="line"-->
-<!--        :line-gap="600"-->
-<!--        :min-line-gap="180"-->
-<!--        :max-line-gap="220"-->
-<!--        :watch="items"-->
-<!--        ref="waterfall"-->
-<!--    >-->
-<!--      &lt;!&ndash; each component is wrapped by a waterfall slot &ndash;&gt;-->
-<!--      <waterfall-slot-->
-<!--          v-for="(item, index) in items"-->
-<!--          :width="item.width"-->
-<!--          :height="item.height"-->
-<!--          :order="index"-->
-<!--          :key="item.id"-->
-<!--      >-->
-<!--        <div class="container mx-auto py-4">-->
-<!--          <img :src="item.urls.regular" :alt="item.altText" @click="goToCreate(item.id)"/>-->
-<!--        </div>-->
-<!--      </waterfall-slot>-->
-<!--    </waterfall>-->
+    <waterfall-component
+      :items="items"
+      :searchResult="searchResult"
+    ></waterfall-component>
   </layout>
 </template>
 
@@ -44,7 +23,6 @@ import WaterfallComponent from "../Shared/WaterfallComponent";
 export default {
   data() {
     return {
-
       hideLoading: false,
       item: {
         src: null,
@@ -63,7 +41,6 @@ export default {
       currentPage: 1,
       total: 0,
       totalPages: 0,
-
     };
   },
   components: {
@@ -78,7 +55,7 @@ export default {
   },
   mounted() {
     this.searchResult = this.$route.query.q;
-    console.log('props', this.$page.props.appName)
+    console.log("props", this.$page.props.appName);
     if (this.$route.query.q !== "") {
       this.searchImage(this.searchResult, false);
     }
@@ -95,46 +72,46 @@ export default {
         this.itemsReset();
       }
       this.queryTerm = e;
-      console.log(typeof e)
-      if (typeof e === 'undefined') {
+      console.log(typeof e);
+      if (typeof e === "undefined") {
         return;
       }
 
       this.hideLoading = true;
       axios
-          .request({
-            url: this.$page.props.unsplashSearch,
-            method: "get",
-            params: {
-              search: this.queryTerm,
-              page: this.currentPage,
-              perPage: this.perPage,
-            },
-          })
-          .then((response) => {
-            this.responseResults = response.data;
-            this.total = response.data.total;
-            this.totalPages = response.data.total_pages;
-            let i = 0;
-            Array.from(this.responseResults.results).forEach((e) => {
-              this.item = e;
-              this.item["imageId"] = e.id;
-              this.item["index"] = i;
-              i++;
-              this.items.push(this.item);
-            });
-
-            this.hideLoading = false;
-          })
-          .catch((error) => {
-            console.log(error);
-            this.hideLoading = false;
+        .request({
+          url: this.$page.props.unsplashSearch,
+          method: "get",
+          params: {
+            search: this.queryTerm,
+            page: this.currentPage,
+            perPage: this.perPage,
+          },
+        })
+        .then((response) => {
+          this.responseResults = response.data;
+          this.total = response.data.total;
+          this.totalPages = response.data.total_pages;
+          let i = 0;
+          Array.from(this.responseResults.results).forEach((e) => {
+            this.item = e;
+            this.item["imageId"] = e.id;
+            this.item["index"] = i;
+            i++;
+            this.items.push(this.item);
           });
+
+          this.hideLoading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.hideLoading = false;
+        });
     },
     handleScroll(event) {
       // Any code to be executed when the window is scrolled
       let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
+        document.documentElement.scrollTop || document.body.scrollTop;
       if (scrollTop + window.innerHeight >= document.body.clientHeight) {
         this.getData();
       }
@@ -159,7 +136,5 @@ export default {
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
-
-
 };
 </script>

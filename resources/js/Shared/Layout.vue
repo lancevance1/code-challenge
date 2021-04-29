@@ -1,50 +1,68 @@
 <template>
   <main>
-    <header></header>
+    <header>
+      <div class=" bg-white rounded-lg shadow-xl ">
+        <h1 class="pt-6 text-4xl font-bold text-center">
+          <inertia-link class="" href="/">Media Library </inertia-link>
+        </h1>
 
-    <div class="container mx-auto ">
-      <div class="antialiased text-gray-900 px-6 ">
-        <div class="max-w-xl mx-auto py-1 divide-y md:max-w-4xl xl:max-w-full ">
-          <div class="py-8">
-            <inertia-link class="text-lg " href="/">
-            <h1 class="text-4xl font-bold">Media Library</h1>
-            </inertia-link>
-            <div class="mt-4 flex space-x-4">
-              <inertia-link class="text-lg " href="/">Home</inertia-link>
-              <inertia-link class="text-lg " href="/media">Media</inertia-link>
-              <!--              <inertia-link class="text-lg " href="/media/create">Add</inertia-link>-->
-
-              <div class="flex border-grey-light border w-1/2">
-                <input
-                  class="w-full  ml-1"
-                  type="text"
-                  placeholder="Search..."
-                  v-model="searchResult"
-                  @keyup.enter="goToSearch(searchResult)"
-                />
-                <button
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  v-on:click="goToSearch(searchResult)"
+        <nav
+          class="relative flex flex-wrap items-center justify-between px-2 py-2"
+        >
+          <div class="container px-6 mx-auto">
+            <ul class="nav-ul">
+              <li>
+                <dropdown
+                  v-if="isLogin"
+                  class="mt-1 ml-8"
+                  placement="bottom-end"
                 >
-                  Search
-                </button>
-              </div>
+                </dropdown>
+                <inertia-link v-if="!isLogin" class="text-lg" href="/login"
+                  >Log in</inertia-link
+                >
+              </li>
 
-              <div>{{$page.props.auth}}</div>
-
-              <dropdown v-if="isLogin" class="mt-1 ml-8" placement="bottom-end"> </dropdown>
-              <inertia-link v-if="!isLogin" class="text-lg " href="/login">Log in</inertia-link>
-            </div>
+              <li>
+                <inertia-link class="text-lg" href="/">Home</inertia-link>
+              </li>
+              <li>
+                <inertia-link class="text-lg" href="/media">Media</inertia-link>
+              </li>
+              <li>
+                <div class="flex">
+                  <input
+                    class="w-full ml-1"
+                    type="text"
+                    placeholder="Search..."
+                    v-model="searchResult"
+                    @keyup.enter="goToSearch(searchResult)"
+                  />
+                  <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    v-on:click="goToSearch(searchResult)"
+                  >
+                    Search
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
+        </nav>
+      </div>
+    </header>
 
-          <div class="md:flex md:flex-grow md:overflow-hidden">
-            <div
-              class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
-              scroll-region
-            >
-              <flashcard></flashcard>
-              <slot />
-            </div>
+    <div class="container mx-auto">
+      <div class="antialiased text-gray-900 px-6">
+        <div class="md:flex md:flex-grow md:overflow-hidden">
+          <div
+            class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
+            scroll-region
+          >
+          
+            <flashcard ></flashcard>
+          
+            <slot />
           </div>
         </div>
       </div>
@@ -54,14 +72,14 @@
 
 <script>
 import Dropdown from "../Shared/Dropdown";
-import Icon from "../Shared/Icon";
+
 import Flashcard from "./Flashcard";
 export default {
   name: "Layout",
   data() {
     return {
       searchResult: "",
-      isLogin:false,
+      isLogin: false,
     };
   },
   props: {
@@ -82,18 +100,16 @@ export default {
   },
   created() {
     this.searchResult = this.$route.query.q;
-    if(this.$page.props.auth.user !== null){
+    if (this.$page.props.auth.user !== null) {
       this.isLogin = true;
     }
-
   },
   components: {
     Flashcard,
     Dropdown,
-    Icon,
   },
   methods: {
-    goToSearch: function(e) {
+    goToSearch: function (e) {
       // this.$router.push(
       //   { path: "search", query: { q: this.searchResult } },
 
@@ -110,3 +126,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.nav-ul {
+  li {
+    margin-left: 0.5rem !important;
+    @apply flex items-center space-x-4;
+  }
+  @apply flex flex-col lg:flex-row list-none space-x-4;
+}
+</style>

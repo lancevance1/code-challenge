@@ -1,63 +1,96 @@
 <template>
-  <div class="p-6  min-h-screen flex justify-center items-center">
-    <div class="w-full max-w-md">
-<!--      <logo class="block mx-auto w-full max-w-xs fill-white" height="50" />-->
-
-      <form class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="login">
-        <div class="px-10 py-12">
-          <h1 class="text-center font-bold text-3xl">Welcome Back!</h1>
-          <div class="mx-auto mt-6 w-24 border-b-2" />
-          <text-input v-model="form.email" :error="form.errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
-          <text-input v-model="form.password" :error="form.errors.password" class="mt-6" label="Password" type="password" />
-          <label class="mt-6 select-none flex items-center" for="remember">
-            <input id="remember" v-model="form.remember" class="mr-1" type="checkbox" />
-            <span class="text-sm">Remember Me</span>
-          </label>
-        </div>
-        <div class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center">
-          <a class="hover:underline" tabindex="-1" href="#reset-password">Forgot password?</a>
-          <loading-button :loading="form.processing" class="btn-indigo" type="submit">Login</loading-button>
-        </div>
-      </form>
+  <layout>
+    <div class="p-6 min-h-full flex justify-center items-center">
+      <div class="w-full max-w-md">
+        <form
+          class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden"
+          @submit.prevent="login"
+        >
+          <div class="px-10 py-12">
+            <h1 class="text-center font-bold text-3xl">Welcome Back!</h1>
+            <div class="mx-auto mt-6 w-24 border-b-2" />
+            <TextInput
+              v-model="form.email"
+              :error="form.errors.email"
+              class="mt-10"
+              label="Email"
+              type="email"
+              autofocus
+              autocapitalize="off"
+            />
+            <TextInput
+              v-model="form.password"
+              :error="form.errors.password"
+              class="mt-6"
+              label="Password"
+              type="password"
+            />
+            <label class="mt-6 select-none flex items-center" for="remember">
+              <input
+                id="remember"
+                v-model="form.remember"
+                class="mr-1"
+                type="checkbox"
+              />
+              <span class="text-sm">Remember Me</span>
+            </label>
+          </div>
+          <div
+            class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
+          >
+            <a class="hover:underline" tabindex="-1" href="#reset-password"
+              >Forgot password?</a
+            >
+            <LoadingButton
+              :loading="form.processing"
+              class="btn-blue"
+              type="submit"
+              >Login</LoadingButton
+            >
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </layout>
 </template>
 
 <script>
-import TextInput from '../../Shared/TextInput'
-import LoadingButton from '../../Shared/LoadingButton'
+import TextInput from "../../Shared/TextInput";
+import LoadingButton from "../../Shared/LoadingButton";
+import Layout from "../../Shared/Layout.vue";
 export default {
   name: "Login",
-  metaInfo: { title: 'Login' },
+  metaInfo: { title: "Login" },
   components: {
     LoadingButton,
     TextInput,
+    Layout,
   },
   data() {
     return {
       form: this.$inertia.form({
-        email: 'admin@test.com',
-        password: '',
+        email: "admin@test.com",
+        password: "",
         remember: false,
       }),
-    }
+    };
   },
   methods: {
     login() {
       this.form
-          .transform(data => ({
-            ...data,
-            remember: data.remember ? 'on' : '',
-          }))
-          .post(this.$page.props.loginAttempt)
+        .transform((data) => ({
+          ...data,
+          remember: data.remember ? "on" : "",
+        }))
+        .post(this.$page.props.loginAttempt);
     },
   },
-  mounted() {
-
-  }
-}
+  mounted() {},
+};
 </script>
 
 <style scoped>
-
+.btn-blue {
+  @apply bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
 </style>

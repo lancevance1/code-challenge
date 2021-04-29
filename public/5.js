@@ -33,6 +33,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -149,8 +150,10 @@ var render = function() {
     "layout",
     { attrs: { title: "Welcome" } },
     [
-      _c("h1", [
-        _vm._v("Welcome User: " + _vm._s(_vm.$page.props.auth.user.name))
+      _c("div", { staticClass: "text-base" }, [
+        _c("h1", [
+          _vm._v("Welcome User: " + _vm._s(_vm.$page.props.auth.user.name))
+        ])
       ]),
       _vm._v(" "),
       _vm.hideLoading ? _c("loading") : _vm._e(),

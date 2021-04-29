@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="changeSrc">
     <loading v-if="show"></loading>
     <img :src="imageSrc" />
   </div>
@@ -27,6 +27,7 @@ export default {
       height:null,
       width:null,
       outputData:{},
+      isLarge:true,
     };
   },
   props: {
@@ -61,7 +62,7 @@ export default {
         .then((response) => {
           this.show = false;
           this.responseResults = response.data;
-          this.imageSrc = this.responseResults.urls.regular;
+          this.imageSrc = this.responseResults.urls.small;
           this.urls = this.responseResults.urls;
           this.height = this.responseResults.height;
           this.width = this.responseResults.width;
@@ -83,6 +84,16 @@ export default {
 
       this.$emit("childByValue", this.outputData);
 
+    },
+    changeSrc: function () {
+      console.log(this.isLarge);
+      if (this.isLarge) {
+        this.imageSrc = this.urls.regular;
+        this.isLarge = false;
+      } else {
+        this.imageSrc = this.urls.small;
+        this.isLarge = true;
+      }
     },
   },
 };

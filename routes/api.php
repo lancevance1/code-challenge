@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 // Route::apiResource('media', 'Api\MediaController');
 Route::group(['middleware' => ['auth:api'], 'as' => 'api.'], function () {
     Route::apiResource('media', 'Api\MediaController');
-    Route::apiResource('user', 'Api\UserController');
+    Route::apiResource('users', 'Api\UserController');
 });
 Route::get('unsplash-search', [UnsplashController::class, 'search'])->name('unsplash_search');
 Route::get('unsplash-image', [UnsplashController::class, 'show'])->name('unsplash_image');

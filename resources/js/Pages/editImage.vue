@@ -2,11 +2,13 @@
   <layout title="Welcome">
     <div class="py-4 mx-auto">
       <!--      <image-card :inputName="imageId" @childByValue="getUrls"></image-card>-->
-      <img :src="imageSrc" />
-
+      <div class="flex justify-center" @click="changeSrc">
+        <img :src="imageSrc" />
+      </div>
       <!--        <h2 class="text-2xl font-bold">Add an image</h2>-->
       <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
-      <div class="mt-8 max-w-md">
+      <form @submit="onSubmit" class="form-container">
+      <!-- <div class="mt-8 max-w-md">
         <div class="grid grid-cols-1 gap-6">
           <label for="title" class="block">
             <span class="text-gray-700">Title</span>
@@ -46,7 +48,51 @@
             Delete
           </button>
         </div>
-      </div>
+      </div> -->
+
+      <div class="mt-8 max-w-full w-full">
+          <div class="grid grid-cols-1 gap-6">
+            <label for="title" class="block">
+              <span class="text-gray-700">Title</span>
+              <input
+                id="title"
+                v-model="form.title"
+                type="text"
+                class="mt-1 block w-full"
+                placeholder="ABC..."
+              />
+            </label>
+
+            <label for="altText" class="block">
+              <span class="text-gray-700">AltText</span>
+              <textarea
+                id="altText"
+                v-model="form.altText"
+                class="mt-1 block w-full"
+                rows="3"
+              ></textarea>
+            </label>
+
+            
+          <button
+            @click="onSubmit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            type="submit"
+            :disabled="form.processing"
+          >
+            Save
+          </button>
+          <button
+            @click="deleteImage"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            type="submit"
+            :disabled="form.processing"
+          >
+            Delete
+          </button>
+          </div>
+        </div>
+      </form>
     </div>
   </layout>
 </template>
@@ -76,6 +122,7 @@ export default {
       id: null,
       imageSrc: null,
       isLoadImage: true,
+      isLarge: true,
     };
   },
   props: {
@@ -121,7 +168,6 @@ export default {
           data: data,
         })
         .then((response) => {
-          
           console.log(JSON.stringify(response.status));
           if (response.status === 200) {
             alert("image edited");
@@ -157,7 +203,7 @@ export default {
           this.form.title = response.data.data.title;
           this.form.altText = response.data.data.altText;
           this.imageId = response.data.data.imageId;
-          this.imageSrc = response.data.data.urls.regular;
+          this.imageSrc = response.data.data.urls.small;
           this.urls = response.data.data.urls;
           this.height = response.data.data.height;
           this.width = response.data.data.width;
@@ -184,6 +230,33 @@ export default {
           console.log(error);
         });
     },
+    changeSrc: function () {
+      console.log(this.isLarge);
+      if (this.isLarge) {
+        this.imageSrc = this.urls.regular;
+        this.isLarge = false;
+      } else {
+        this.imageSrc = this.urls.small;
+        this.isLarge = true;
+      }
+    },
   },
 };
 </script>
+<style scoped>
+.form-container {
+  margin: 0 auto;
+  @apply w-full;
+}
+@media (min-width: 640px) {
+  .form-container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .c {
+    max-width: 768px;
+  }
+}
+
+</style>

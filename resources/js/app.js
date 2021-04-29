@@ -1,8 +1,6 @@
 import { App, plugin } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import MediaComponent from "./components/MediaComponent";
-import MediaItemComponent from "./components/MediaItemComponent";
 import search from "./Pages/search";
 import PortalVue from 'portal-vue'
 import VueLazyload from 'vue-lazyload'
@@ -27,21 +25,7 @@ Vue.use(plugin)
 Vue.use(VueRouter)
 
 const routes = [
-  {
-      name: 'mediaItem',
-      path: '/media/:mediaId',
-      component: MediaItemComponent
-  },
-  {
-      name: 'media',
-      path: '/media',
-      component: MediaComponent
-  },
-  {
-    name: 'search',
-      path: '/search',
-      component: search
-  }
+ 
   
 
 ];

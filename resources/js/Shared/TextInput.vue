@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
     <input :id="id" ref="input" v-bind="$attrs" class="form-input" :class="{ error: error }" :type="type" :value="value" @input="$emit('input', $event.target.value)" />
-    <div v-if="error" class="form-error">{{ error }}</div>
+    <div v-if="error" class="form-error text-red-500 py-1">{{ error }}</div>
   </div>
 </template>
 

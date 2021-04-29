@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="">
     <div class="mb-8 flex justify-start max-w-3xl">
       <h1 class="font-bold text-3xl">
 
-        <span class="text-indigo-400 font-medium">test</span>
-<!--        {{ form.name }}-->
+        <span class="text-blue-500 font-medium">Welcome {{ $page.props.auth.user.name}}</span>
+       
 
 
       </h1>
     </div>
 
-    <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
+    <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl w-full">
       <form @submit.prevent="update">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Name" />
@@ -48,6 +48,7 @@ export default {
   },
   layout: Layout,
   props: {
+    
 
   },
   // remember: 'form',
@@ -55,20 +56,23 @@ export default {
     return {
       form: this.$inertia.form({
         _method: 'put',
-        name: null,
-        email: null,
+        name: this.$page.props.auth.user.name,
+        email: this.$page.props.auth.user.email,
         password: null,
       }),
     }
   },
   created() {
-console.log(this.$page.auth)
+// console.log(this.$page.props.urls.update.replace(":id", this.$page.props.auth.user.id))
+
   },
   methods: {
     update() {
-      // this.form.post(this.route('users.update', this.user.id), {
-      //   onSuccess: () => this.form.reset('password', 'photo'),
-      // })
+      console.log(this.form)
+      this.form.post(this.$page.props.urls.update.replace(":id", this.$page.props.auth.user.id)
+        
+      )
+      // console.log(this.$page.props.flash)
     },
     destroy() {
       // if (confirm('Are you sure you want to delete this user?')) {

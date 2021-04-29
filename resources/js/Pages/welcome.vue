@@ -1,6 +1,7 @@
 <template>
   <layout title="Welcome">
-    <h1>Welcome User: {{ $page.props.auth.user.name }}</h1>
+    <div class="text-base"> <h1>Welcome User: {{ $page.props.auth.user.name }}</h1></div>
+   
     <!-- <inertia-link :href="$route('media.create')">Create User</inertia-link> -->
 <!--    <p>-->
 <!--      Hello {{ $page.props.user }}, welcome {{ $page.props.media }} to your-->

@@ -3,7 +3,8 @@
 namespace App\Repositories;   
 
 use App\Repositories\Interfaces\UserRepositoryInterface; 
-use App\Models\User;   
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class UserRepository implements UserRepositoryInterface 
@@ -28,9 +29,12 @@ class UserRepository implements UserRepositoryInterface
    }
 
    public function update($request, $user){
-    $user = $user->update([
+    //   dd($request->password);
+    $user->update([
         'name' => $request->name,
         'email' => $request->email,
+        'password' => Hash::make($request->password),
+        
         
     ]);
     return $user->fresh();

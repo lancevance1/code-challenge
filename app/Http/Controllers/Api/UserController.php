@@ -9,6 +9,8 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -40,11 +42,15 @@ class UserController extends Controller
         return new UserResource($result);
     }
 
-    public function update(UserRequest $request, User $user): UserResource
+    public function update(UserRequest $request, User $user)
     {
         $result = $this->userRepository->update($request, $user);
 
-        return new UserResource($result);
+        // return new UserResource($result);
+        //  dd(Redirect::back()->with('success', 'User updated.'));
+        // session()->put('success','User updated.');
+         return Redirect::back()->with('success', 'User updated.');
+         
     }
 
     public function destroy(User $user): \Illuminate\Http\JsonResponse

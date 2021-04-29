@@ -1,13 +1,17 @@
 <template>
   <layout title="Welcome">
     <div class="py-4 mx-auto">
-      <image-card :inputName="imageId" @childByValue="getUrls"></image-card>
-      <form @submit="onSubmit">
+      <image-card
+        class="flex justify-center"
+        :inputName="imageId"
+        @childByValue="getUrls"
+      ></image-card>
+
+      <form @submit="onSubmit" class="form-container">
         <!--        <h2 class="text-2xl font-bold">Add an image</h2>-->
         <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
-        <div class="mt-8 max-w-md">
+        <div class="mt-8 max-w-full w-full">
           <div class="grid grid-cols-1 gap-6">
-
             <label for="title" class="block">
               <span class="text-gray-700">Title</span>
               <input
@@ -57,15 +61,15 @@ export default {
         title: null,
         altText: null,
         imageId: null,
-        urls:{},
-        width:null,
-        height:null,
+        urls: {},
+        width: null,
+        height: null,
       },
-      urls:{},
+      urls: {},
       hideLoading: false,
       imageId: null,
-      height:null,
-      width:null,
+      height: null,
+      width: null,
     };
   },
   props: {
@@ -80,11 +84,9 @@ export default {
     console.log(this.$route.query.imageId);
     this.imageId = this.$route.query.imageId;
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
-    onSubmit: function(event) {
+    onSubmit: function (event) {
       event.preventDefault();
       // alert(JSON.stringify(this.form));
       //add all selected images
@@ -119,22 +121,35 @@ export default {
         .catch((error) => {
           if (error.response.status === 422) {
             alert(error.response.data.message);
-          }else if(error.response.status === 401){
-            alert("please login")
+          } else if (error.response.status === 401) {
+            alert("please login");
           }
           console.log(error.response.data);
         });
     },
-    getUrls: function(childValue) {
-
-      // console.log("child: "+childValue.width)
+    getUrls: function (childValue) {
       this.urls = childValue.urls;
       this.width = childValue.width;
       this.height = childValue.height;
-
     },
   },
 };
 </script>
 
+<style scoped>
+.form-container {
+  margin: 0 auto;
+  @apply w-full;
+}
+@media (min-width: 640px) {
+  .form-container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .c {
+    max-width: 768px;
+  }
+}
 
+</style>
