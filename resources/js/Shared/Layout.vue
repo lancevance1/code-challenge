@@ -24,6 +24,12 @@
               </li>
 
               <li>
+                <inertia-link v-if="!isLogin" class="text-lg" href="/register"
+                >Register</inertia-link
+                >
+              </li>
+
+              <li>
                 <inertia-link class="text-lg" href="/">Home</inertia-link>
               </li>
               <li>

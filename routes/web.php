@@ -11,8 +11,10 @@
 |
 */
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\MediaController;
@@ -32,6 +34,33 @@ Route::post('login', [LoginController::class, 'login'])
 Route::post('logout', [LoginController::class, 'logout'])
     ->name('logout');
 
+
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->name('forgotPassword')
+    ->middleware('guest');
+
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->name('sendLink')
+    ->middleware('guest');
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])
+    ->name('register')
+    ->middleware('guest');
+
+Route::post('register', [RegisterController::class, 'register'])
+    ->name('register')
+    ->middleware('guest');
+
+
+Route::get('reset-password', [ResetPasswordController::class, 'showResetForm'])
+    ->name('showResetForm')
+    ->middleware('guest');
+
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])
+    ->name('password.reset')
+    ->middleware('guest');
+
+
 Route::get('/', function () {
     return redirect('/home');
 });
@@ -39,7 +68,7 @@ Route::get('/', function () {
 
 Route::get('search', [SearchController::class, 'index'])->name('search');
 Route::get('home', [HomeController::class, 'index'])->name('home.index');
- Route::get('media', [MediaController::class, 'index'])->middleware('auth');;
+Route::get('media', [MediaController::class, 'index'])->middleware('auth');;
 Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
 Route::get('media/{medium}/edit', [MediaController::class, 'edit'])->name('media.edit')->middleware('auth');;
 Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');;

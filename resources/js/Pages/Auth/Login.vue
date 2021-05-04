@@ -1,5 +1,5 @@
 <template>
-  <layout>
+  <layout title="Log in">
     <div class="p-6 min-h-full flex justify-center items-center">
       <div class="w-full max-w-md">
         <form
@@ -38,9 +38,8 @@
           <div
             class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
           >
-            <a class="hover:underline" tabindex="-1" href="#reset-password"
-              >Forgot password?</a
-            >
+            <inertia-link class="text-md" href="/forgot-password"
+            >Forgot password?</inertia-link>
             <LoadingButton
               :loading="form.processing"
               class="btn-blue"

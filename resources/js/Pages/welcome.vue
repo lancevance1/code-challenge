@@ -1,5 +1,5 @@
 <template>
-  <layout title="Welcome">
+  <layout title="Media Library">
     <div class="text-base">
       <h1>Welcome User: {{ $page.props.auth.user.name }}</h1>
     </div>

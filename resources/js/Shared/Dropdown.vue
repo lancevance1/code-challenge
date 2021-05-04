@@ -12,7 +12,7 @@
       </div>
 
       <button slot="reference">
-        <div class="text-lg">{{ $page.props.auth.user.name || "Guest" }}</div>
+        <div class="text-lg">{{ $page.props.auth.user.name }}</div>
       </button>
     </popper>
   </div>

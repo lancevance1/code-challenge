@@ -1,14 +1,14 @@
 <template>
   <div class="menu">
     <inertia-link
-      class="button"
+      class="subMenu"
       :href="'/users/' + $page.props.auth.user.id + '/edit'"
       >My Profile</inertia-link
     >
-    <inertia-link v-if="isAdmin" class="button" href="/"
+    <inertia-link v-if="isAdmin" class="subMenu" href="/"
       >Manage Users</inertia-link
     >
-    <inertia-link class="button" :href="$page.props.logout" method="post"
+    <inertia-link class="subMenu" :href="$page.props.logout" method="post"
       >Logout</inertia-link
     >
   </div>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.button {
+.subMenu {
   @apply block px-6 py-2 hover:bg-gray-100  text-lg;
 }
 .menu {

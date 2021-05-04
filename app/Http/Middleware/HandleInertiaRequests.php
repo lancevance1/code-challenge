@@ -43,6 +43,9 @@ class HandleInertiaRequests extends Middleware
             'loginAttempt' => route('login.attempt'),
             'logout' => route('logout'),
             'unsplashGetImage' => route('unsplash_image'),
+            'sendLink' => route('sendLink'),
+            'resetPassword' => route('password.reset'),
+            'register' => route('register'),
              // Synchronously
              'appName' => config('app.name'),
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="$page.props.flash.success && show" class="success">
-      <div class="flex items-center">
+      <div class="flex justify-center items-center">
         <svg
           class="ml-4 mr-2 flex-shrink-0 w-4 h-4 fill-white"
           xmlns="http://www.w3.org/2000/svg"
@@ -33,9 +33,9 @@
           Object.keys($page.props.errors).length > 0) &&
         show
       "
-      class="error"
+      class="error block"
     >
-      <div class="flex items-center">
+      <div class="flex  items-center">
         <svg
           class="ml-4 mr-2 flex-shrink-0 w-4 h-4 fill-white"
           xmlns="http://www.w3.org/2000/svg"
