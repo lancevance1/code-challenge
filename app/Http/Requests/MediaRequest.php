@@ -30,7 +30,6 @@ class MediaRequest extends FormRequest
             "altText" => 'string|nullable',
             "width" => 'numeric|required',
             "height" => 'numeric|required',
-
         ];
     }
 }

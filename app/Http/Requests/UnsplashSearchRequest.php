@@ -27,7 +27,6 @@ class UnsplashSearchRequest extends FormRequest
             'search' => 'required|min:1|string',
             'page' => 'nullable|numeric',
             'perPage' => 'nullable|numeric|min:10'
-
         ];
     }
 }

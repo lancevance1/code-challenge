@@ -8,8 +8,6 @@
       ></image-card>
 
       <form @submit="onSubmit" class="form-container">
-        <!--        <h2 class="text-2xl font-bold">Add an image</h2>-->
-        <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
         <div class="mt-8 max-w-full w-full">
           <div class="grid grid-cols-1 gap-6">
             <label for="title" class="block">
@@ -88,11 +86,8 @@ export default {
   methods: {
     onSubmit: function (event) {
       event.preventDefault();
-      // alert(JSON.stringify(this.form));
-      //add all selected images
 
       this.form.height = this.height;
-
       this.form.width = this.width;
       this.form.imageId = this.imageId;
       this.form.urls = this.urls;

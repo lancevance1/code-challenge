@@ -1,7 +1,6 @@
 import { App, plugin } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import search from "./Pages/search";
 import PortalVue from 'portal-vue'
 import VueLazyload from 'vue-lazyload'
 import { InertiaProgress } from '@inertiajs/progress'
@@ -11,16 +10,8 @@ import loading from './Shared/Loading'
 
 
 Vue.use(loading)
-// import { ZiggyVue } from 'ziggy';
-// import { Ziggy } from './ziggy';
-
-// Vue.use(ZiggyVue, Ziggy);
-
-
 Vue.use(VueLazyload)
-
 Vue.use(PortalVue)
-
 Vue.use(plugin)
 Vue.use(VueRouter)
 

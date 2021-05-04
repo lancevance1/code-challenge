@@ -14,7 +14,6 @@ class UserRepository implements UserRepositoryInterface
     public function index(){
 
         return User::all();
-     
     }
 
     public function store($request){
@@ -29,13 +28,11 @@ class UserRepository implements UserRepositoryInterface
    }
 
    public function update($request, $user){
-    //   dd($request->password);
     $user->update([
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
-        
-        
+
     ]);
     return $user->fresh();
    }
@@ -43,7 +40,5 @@ class UserRepository implements UserRepositoryInterface
    public function destroy($user){
     return $user->delete();
    }
-
-    
     
 }

@@ -1,54 +1,11 @@
 <template>
   <layout title="Welcome">
     <div class="py-4 mx-auto">
-      <!--      <image-card :inputName="imageId" @childByValue="getUrls"></image-card>-->
       <div class="flex justify-center" @click="changeSrc">
         <img :src="imageSrc" />
       </div>
-      <!--        <h2 class="text-2xl font-bold">Add an image</h2>-->
-      <!--        <p class="mt-2 text-lg text-gray-600">test test.</p>-->
+
       <form @submit="onSubmit" class="form-container">
-      <!-- <div class="mt-8 max-w-md">
-        <div class="grid grid-cols-1 gap-6">
-          <label for="title" class="block">
-            <span class="text-gray-700">Title</span>
-            <input
-              id="title"
-              v-model="form.title"
-              type="text"
-              class="mt-1 block w-full"
-              placeholder="ABC..."
-            />
-          </label>
-
-          <label for="altText" class="block">
-            <span class="text-gray-700">AltText</span>
-            <textarea
-              id="altText"
-              v-model="form.altText"
-              class="mt-1 block w-full"
-              rows="3"
-            ></textarea>
-          </label>
-
-          <button
-            @click="onSubmit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            type="submit"
-            :disabled="form.processing"
-          >
-            Save
-          </button>
-          <button
-            @click="deleteImage"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            type="submit"
-            :disabled="form.processing"
-          >
-            Delete
-          </button>
-        </div>
-      </div> -->
 
       <div class="mt-8 max-w-full w-full">
           <div class="grid grid-cols-1 gap-6">
@@ -72,7 +29,6 @@
                 rows="3"
               ></textarea>
             </label>
-
             
           <button
             @click="onSubmit"
@@ -139,15 +95,11 @@ export default {
     this.id = window.location.pathname.split("/")[2];
   },
   mounted() {
-    // this.imageId = this.$page.props.media.imageId;
-    // console.log("title "+this.$page.props.media.title)
-
     this.getImage();
   },
   methods: {
     onSubmit: function (event) {
       event.preventDefault();
-      // alert(JSON.stringify(this.form));
       //add all selected images
 
       this.form.height = this.height;
@@ -155,9 +107,6 @@ export default {
       this.form.imageId = this.imageId;
       this.form.urls = this.urls;
       let data = JSON.stringify(this.form);
-      console.log(this.$page.props.urls.update);
-      console.log(data);
-
       axios
         .request({
           url: this.$page.props.urls.update.replace(":id", this.id),
@@ -168,7 +117,6 @@ export default {
           data: data,
         })
         .then((response) => {
-          console.log(JSON.stringify(response.status));
           if (response.status === 200) {
             alert("image edited");
           } else {
@@ -179,11 +127,9 @@ export default {
           if (error.response.status === 422) {
             alert(error.response.data.message);
           }
-          console.log(error.response.data);
         });
     },
     getUrls: function (childValue) {
-      // console.log("child: "+childValue.width)
       this.urls = childValue.urls;
       this.width = childValue.width;
       this.height = childValue.height;
@@ -198,8 +144,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(JSON.stringify(response.data));
-
           this.form.title = response.data.data.title;
           this.form.altText = response.data.data.altText;
           this.imageId = response.data.data.imageId;
@@ -209,8 +153,7 @@ export default {
           this.width = response.data.data.width;
         })
         .catch((error) => {
-          console.log(JSON.stringify(error));
-          if (error.status == 404) {
+          if (error.status === 404) {
             return console.log("404");
           }
           console.log(error.response.data);
