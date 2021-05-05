@@ -1,6 +1,6 @@
 <template>
   <main>
-    <header>
+    <headersss>
       <div class="bg-white rounded-lg shadow-xl">
         <h1 class="pt-6 text-4xl font-bold text-center">
           <inertia-link class="" href="/">Media Library </inertia-link>
@@ -55,16 +55,19 @@
           </div>
         </nav>
       </div>
-    </header>
+      <flashcard></flashcard>
+    </headersss>
 
     <div class="container mx-auto">
+
       <div class="antialiased text-gray-900 px-6">
         <div class="md:flex md:flex-grow md:overflow-hidden">
+
           <div
             class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
             scroll-region
           >
-            <flashcard></flashcard>
+
 
             <slot />
           </div>

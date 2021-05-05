@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex justify-center ">
     <div v-if="$page.props.flash.success && show" class="success">
       <div class="flex justify-center items-center">
         <svg
@@ -101,12 +101,12 @@ export default {
 </script>
 <style scoped>
 .success {
-  @apply mb-8 flex items-center justify-between bg-green-500 rounded max-w-3xl;
+  @apply mb-8 flex items-center justify-between bg-green-500 rounded ;
 }
 .error {
-  @apply mb-8 flex items-center justify-between bg-red-400 rounded max-w-3xl;
+  @apply mb-8 flex items-center justify-between bg-red-400 rounded ;
 }
 .text{
-  @apply py-4 text-white text-sm font-medium
+  @apply py-4 text-white text-sm font-medium text-center
 }
 </style>

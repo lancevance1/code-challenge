@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="mb-8 flex justify-start max-w-3xl">
+    <div class="mb-8 flex justify-center max-w-3xl">
       <h1 class="font-bold text-3xl">
         <span class="text-blue-500 font-medium">Welcome {{ $page.props.auth.user.name}}</span>
       </h1>
@@ -14,7 +14,7 @@
           <text-input v-model="form.password" :error="form.errors.password" class="pr-6 pb-8 w-full lg:w-1/2" type="password" autocomplete="new-password" label="Password" />
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
-          <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Update User</loading-button>
+          <loading-button :loading="form.processing" class="btn-blue" type="submit">Update User</loading-button>
         </div>
       </form>
     </div>
@@ -59,3 +59,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.btn-blue {
+  @apply bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+</style>

@@ -36,15 +36,15 @@ Route::post('logout', [LoginController::class, 'logout'])
 
 
 Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
-    ->name('forgotPassword')
-    ->middleware('guest');
+    ->name('forgotPassword');
 
-Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendLinkEmail'])
     ->name('sendLink')
     ->middleware('guest');
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])
-    ->name('register')
+    ->name('showRegistrationForm')
     ->middleware('guest');
 
 Route::post('register', [RegisterController::class, 'register'])
@@ -62,7 +62,7 @@ Route::post('reset-password', [ResetPasswordController::class, 'reset'])
 
 
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/search');
 });
 
 
@@ -71,5 +71,8 @@ Route::get('home', [HomeController::class, 'index'])->name('home.index');
 Route::get('media', [MediaController::class, 'index'])->middleware('auth');;
 Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
 Route::get('media/{medium}/edit', [MediaController::class, 'edit'])->name('media.edit')->middleware('auth');;
-Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');;
+Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');;
 
+Route::put('users/{user}', [UserController::class, 'update'])
+    ->name('users.update')
+    ->middleware('auth');

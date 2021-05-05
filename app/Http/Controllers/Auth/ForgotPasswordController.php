@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ForgotPasswordController extends Controller
@@ -19,11 +21,21 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails;
+    use SendsPasswordResetEmails{
+        sendResetLinkEmail as sendResetLinkEmail;
+    }
 
 
     public function showLinkRequestForm()
     {
-        return Inertia::render('Auth/ForgotPassword');
+        return Inertia::render('Auth/ForgotPassword.vue');
+    }
+
+
+    public function sendLinkEmail(Request $request)
+    {
+//dd($request->session());
+         return $this->sendResetLinkEmail($request);
+//        return Redirect::back()->sessio
     }
 }

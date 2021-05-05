@@ -46,6 +46,9 @@ class HandleInertiaRequests extends Middleware
             'sendLink' => route('sendLink'),
             'resetPassword' => route('password.reset'),
             'register' => route('register'),
+//            'register' => route('forgotPassword'),
+
+
              // Synchronously
              'appName' => config('app.name'),
 
@@ -61,7 +64,7 @@ class HandleInertiaRequests extends Middleware
             },
             'flash' => function () use ($request) {
                 return [
-                    'success' => $request->session()->get('success'),
+                    'success' => $request->session()->has('status')?$request->session()->get('status'):$request->session()->get('success'),
                     'error' => $request->session()->get('error'),
                 ];
             },
