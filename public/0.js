@@ -658,174 +658,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    [
-      _c(
-        "headersss",
-        [
-          _c("div", { staticClass: "bg-white rounded-lg shadow-xl" }, [
-            _c(
-              "h1",
-              { staticClass: "pt-6 text-4xl font-bold text-center" },
-              [
-                _c("inertia-link", { attrs: { href: "/" } }, [
-                  _vm._v("Media Library ")
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("nav", { staticClass: "nav" }, [
-              _c("div", { staticClass: "container px-6 mx-auto" }, [
-                _c("ul", { staticClass: "nav-ul" }, [
-                  _c(
-                    "li",
-                    [
-                      _vm.isLogin
-                        ? _c("dropdown", { attrs: { placement: "bottom-end" } })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.isLogin
-                        ? _c(
-                            "inertia-link",
-                            {
-                              staticClass: "text-lg",
-                              attrs: { href: "/login" }
-                            },
-                            [_vm._v("Log in")]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    [
-                      !_vm.isLogin
-                        ? _c(
-                            "inertia-link",
-                            {
-                              staticClass: "text-lg",
-                              attrs: { href: "/register" }
-                            },
-                            [_vm._v("Register")]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    [
-                      _c(
-                        "inertia-link",
-                        { staticClass: "text-lg", attrs: { href: "/" } },
-                        [_vm._v("Home")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    [
-                      _c(
-                        "inertia-link",
-                        { staticClass: "text-lg", attrs: { href: "/media" } },
-                        [_vm._v("Media")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("div", { staticClass: "flex" }, [
-                      _c("input", {
-                        directives: [
+  return _c("main", [
+    _c(
+      "header",
+      [
+        _c("div", { staticClass: "bg-white rounded-lg shadow-xl" }, [
+          _c(
+            "h1",
+            { staticClass: "pt-6 text-4xl font-bold text-center" },
+            [
+              _c("inertia-link", { attrs: { href: "/" } }, [
+                _vm._v("Media Library ")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("nav", { staticClass: "nav" }, [
+            _c("div", { staticClass: "container px-6 mx-auto" }, [
+              _c("ul", { staticClass: "nav-ul" }, [
+                _c(
+                  "li",
+                  [
+                    _vm.isLogin
+                      ? _c("dropdown", { attrs: { placement: "bottom-end" } })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.isLogin
+                      ? _c(
+                          "inertia-link",
+                          { staticClass: "text-lg", attrs: { href: "/login" } },
+                          [_vm._v("Log in")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    !_vm.isLogin
+                      ? _c(
+                          "inertia-link",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.searchResult,
-                            expression: "searchResult"
-                          }
-                        ],
-                        staticClass: "w-full ml-1",
-                        attrs: { type: "text", placeholder: "Search..." },
-                        domProps: { value: _vm.searchResult },
-                        on: {
-                          keyup: function($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.goToSearch(_vm.searchResult)
+                            staticClass: "text-lg",
+                            attrs: { href: "/register" }
                           },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.searchResult = $event.target.value
+                          [_vm._v("Register")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "inertia-link",
+                      { staticClass: "text-lg", attrs: { href: "/" } },
+                      [_vm._v("Home")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "inertia-link",
+                      { staticClass: "text-lg", attrs: { href: "/media" } },
+                      [_vm._v("Media")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "flex" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchResult,
+                          expression: "searchResult"
+                        }
+                      ],
+                      staticClass: "w-full ml-1",
+                      attrs: { type: "text", placeholder: "Search..." },
+                      domProps: { value: _vm.searchResult },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.goToSearch(_vm.searchResult)
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.searchResult = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button",
+                        on: {
+                          click: function($event) {
+                            return _vm.goToSearch(_vm.searchResult)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "button",
-                          on: {
-                            click: function($event) {
-                              return _vm.goToSearch(_vm.searchResult)
-                            }
-                          }
-                        },
-                        [_vm._v("\n                  Search\n                ")]
-                      )
-                    ])
+                      },
+                      [_vm._v("\n                  Search\n                ")]
+                    )
                   ])
                 ])
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("flashcard")
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container mx-auto" }, [
-        _c("div", { staticClass: "antialiased text-gray-900 px-6" }, [
+          ])
+        ]),
+        _vm._v(" "),
+        _c("flashcard")
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container mx-auto" }, [
+      _c("div", { staticClass: "antialiased text-gray-900 px-6" }, [
+        _c("div", { staticClass: "md:flex md:flex-grow md:overflow-hidden" }, [
           _c(
             "div",
-            { staticClass: "md:flex md:flex-grow md:overflow-hidden" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto",
-                  attrs: { "scroll-region": "" }
-                },
-                [_vm._t("default")],
-                2
-              )
-            ]
+            {
+              staticClass: "md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto",
+              attrs: { "scroll-region": "" }
+            },
+            [_vm._t("default")],
+            2
           )
         ])
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <headersss>
+    <header>
       <div class="bg-white rounded-lg shadow-xl">
         <h1 class="pt-6 text-4xl font-bold text-center">
           <inertia-link class="" href="/">Media Library </inertia-link>
@@ -56,7 +56,7 @@
         </nav>
       </div>
       <flashcard></flashcard>
-    </headersss>
+    </header>
 
     <div class="container mx-auto">
 
