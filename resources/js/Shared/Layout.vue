@@ -58,21 +58,21 @@
       <flashcard></flashcard>
     </header>
 
-    <div class="container mx-auto">
+    <div class="container mx-auto px-0.5 ">
+      <slot />
+<!--      <div class="antialiased text-gray-900 px-6">-->
+<!--        <div class="md:flex md:flex-grow md:overflow-hidden">-->
 
-      <div class="antialiased text-gray-900 px-6">
-        <div class="md:flex md:flex-grow md:overflow-hidden">
-
-          <div
-            class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto"
-            scroll-region
-          >
+<!--          <div-->
+<!--            class="md:flex-1  md:p-12 md:overflow-y-auto"-->
+<!--            scroll-region-->
+<!--          >-->
 
 
-            <slot />
-          </div>
-        </div>
-      </div>
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </main>
 </template>

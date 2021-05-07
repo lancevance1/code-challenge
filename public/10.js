@@ -32,6 +32,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -247,22 +249,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "layout",
-    { attrs: { title: "Welcome" } },
-    [
-      _c("div", { staticClass: "py-1 text-base" }, [
-        _vm._v("Total results: " + _vm._s(_vm.total))
-      ]),
-      _vm._v(" "),
-      _vm.hideLoading ? _c("loading") : _vm._e(),
-      _vm._v(" "),
-      _c("waterfall-component", {
-        attrs: { items: _vm.items, searchResult: _vm.searchResult }
-      })
-    ],
-    1
-  )
+  return _c("layout", { attrs: { title: "Welcome" } }, [
+    _c(
+      "div",
+      { staticClass: "px-4 py-8" },
+      [
+        _c("div", { staticClass: "py-1 text-base" }, [
+          _vm._v("Total results: " + _vm._s(_vm.total))
+        ]),
+        _vm._v(" "),
+        _vm.hideLoading ? _c("loading") : _vm._e(),
+        _vm._v(" "),
+        _c("waterfall-component", {
+          attrs: { items: _vm.items, searchResult: _vm.searchResult }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

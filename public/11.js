@@ -209,7 +209,7 @@ var render = function() {
     "layout",
     { attrs: { title: "Media Library" } },
     [
-      _c("div", { staticClass: "text-base" }, [
+      _c("div", { staticClass: "text-base px-4 py-8" }, [
         _c("h1", [
           _vm._v("Welcome User: " + _vm._s(_vm.$page.props.auth.user.name))
         ])

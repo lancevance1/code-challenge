@@ -47,6 +47,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -56,6 +119,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   components: {
+    Layout: _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__["default"],
     LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_2__["default"],
     TextInput: _Shared_TextInput__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -224,186 +288,201 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "mb-8 flex justify-center max-w-3xl" }, [
-      _c("h1", { staticClass: "font-bold text-3xl" }, [
-        _c("span", { staticClass: "text-blue-500 font-medium" }, [
-          _vm._v("Welcome " + _vm._s(_vm.$page.props.auth.user.name))
-        ])
-      ])
-    ]),
-    _vm._v(" "),
     _c(
       "div",
-      {
-        staticClass:
-          "bg-white rounded-md shadow overflow-hidden max-w-3xl w-full"
-      },
+      { staticClass: "p-6 min-h-full flex justify-center  flex-wrap gap-y-4" },
       [
         _c(
-          "form",
+          "div",
           {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.update($event)
-              }
-            }
+            staticClass:
+              "bg-white rounded-md shadow overflow-hidden max-w-3xl w-full"
           },
           [
             _c(
-              "div",
-              { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" },
-              [
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: { error: _vm.form.errors.name, label: "Name" },
-                  model: {
-                    value: _vm.form.name,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "name", $$v)
-                    },
-                    expression: "form.name"
-                  }
-                }),
-                _vm._v(" "),
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: { error: _vm.form.errors.email, label: "Email" },
-                  model: {
-                    value: _vm.form.email,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "email", $$v)
-                    },
-                    expression: "form.email"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
+              "form",
               {
-                staticClass:
-                  "px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center"
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  }
+                }
               },
               [
                 _c(
-                  "loading-button",
+                  "h1",
+                  { staticClass: "pt-3 text-center font-bold text-3xl" },
+                  [_vm._v("Profile")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-auto mt-6 w-24 border-b-2" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "p-4 -mr-6 -mb-8 flex flex-wrap" },
+                  [
+                    _c("text-input", {
+                      staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                      attrs: { error: _vm.form.errors.name, label: "Name" },
+                      model: {
+                        value: _vm.form.name,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "name", $$v)
+                        },
+                        expression: "form.name"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("text-input", {
+                      staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                      attrs: { error: _vm.form.errors.email, label: "Email" },
+                      model: {
+                        value: _vm.form.email,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "email", $$v)
+                        },
+                        expression: "form.email"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
                   {
-                    staticClass: "btn-blue",
-                    attrs: { loading: _vm.form.processing, type: "submit" }
+                    staticClass:
+                      "px-8 py-1 bg-gray-50 border-t border-gray-100 flex items-center"
                   },
-                  [_vm._v("Update User")]
+                  [
+                    _c(
+                      "loading-button",
+                      {
+                        staticClass: "btn-blue",
+                        attrs: { loading: _vm.form.processing, type: "submit" }
+                      },
+                      [_vm._v("Update User")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              ]
             )
           ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "bg-white rounded-md shadow overflow-hidden max-w-3xl w-full"
-      },
-      [
+        ),
+        _vm._v(" "),
         _c(
-          "form",
+          "div",
           {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.updatePass($event)
-              }
-            }
+            staticClass:
+              "bg-white rounded-md shadow overflow-hidden max-w-3xl w-full"
           },
           [
             _c(
-              "div",
-              { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" },
-              [
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: {
-                    error: _vm.formPassword.errors.password,
-                    type: "password",
-                    autocomplete: "current-password",
-                    label: "Current Password"
-                  },
-                  model: {
-                    value: _vm.formPassword.password,
-                    callback: function($$v) {
-                      _vm.$set(_vm.formPassword, "password", $$v)
-                    },
-                    expression: "formPassword.password"
-                  }
-                }),
-                _vm._v(" "),
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: {
-                    error: _vm.formPassword.errors.new_password,
-                    type: "password",
-                    autocomplete: "new-password",
-                    label: "New Password"
-                  },
-                  model: {
-                    value: _vm.formPassword.new_password,
-                    callback: function($$v) {
-                      _vm.$set(_vm.formPassword, "new_password", $$v)
-                    },
-                    expression: "formPassword.new_password"
-                  }
-                }),
-                _vm._v(" "),
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: {
-                    error: _vm.formPassword.errors.new_password_confirmation,
-                    type: "password",
-                    autocomplete: "new-password",
-                    label: "Confirm New Password"
-                  },
-                  model: {
-                    value: _vm.formPassword.new_password_confirmation,
-                    callback: function($$v) {
-                      _vm.$set(
-                        _vm.formPassword,
-                        "new_password_confirmation",
-                        $$v
-                      )
-                    },
-                    expression: "formPassword.new_password_confirmation"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
+              "form",
               {
-                staticClass:
-                  "px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center"
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.updatePass($event)
+                  }
+                }
               },
               [
                 _c(
-                  "loading-button",
+                  "h1",
+                  { staticClass: "pt-3 text-center font-bold text-3xl" },
+                  [_vm._v("Password")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-auto mt-6 w-24 border-b-2" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "p-4 -mr-6 -mb-8 flex flex-wrap" },
+                  [
+                    _c("text-input", {
+                      staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                      attrs: {
+                        error: _vm.formPassword.errors.password,
+                        type: "password",
+                        autocomplete: "current-password",
+                        label: "Current Password"
+                      },
+                      model: {
+                        value: _vm.formPassword.password,
+                        callback: function($$v) {
+                          _vm.$set(_vm.formPassword, "password", $$v)
+                        },
+                        expression: "formPassword.password"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("text-input", {
+                      staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                      attrs: {
+                        error: _vm.formPassword.errors.new_password,
+                        type: "password",
+                        autocomplete: "new-password",
+                        label: "New Password"
+                      },
+                      model: {
+                        value: _vm.formPassword.new_password,
+                        callback: function($$v) {
+                          _vm.$set(_vm.formPassword, "new_password", $$v)
+                        },
+                        expression: "formPassword.new_password"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("text-input", {
+                      staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                      attrs: {
+                        error:
+                          _vm.formPassword.errors.new_password_confirmation,
+                        type: "password",
+                        autocomplete: "new-password",
+                        label: "Confirm New Password"
+                      },
+                      model: {
+                        value: _vm.formPassword.new_password_confirmation,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.formPassword,
+                            "new_password_confirmation",
+                            $$v
+                          )
+                        },
+                        expression: "formPassword.new_password_confirmation"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
                   {
-                    staticClass: "btn-blue",
-                    attrs: {
-                      loading: _vm.formPassword.processing,
-                      type: "submit"
-                    }
+                    staticClass:
+                      "px-8 py-1 bg-gray-50 border-t border-gray-100 flex items-center"
                   },
-                  [_vm._v("Update Password")]
+                  [
+                    _c(
+                      "loading-button",
+                      {
+                        staticClass: "btn-blue",
+                        attrs: {
+                          loading: _vm.formPassword.processing,
+                          type: "submit"
+                        }
+                      },
+                      [_vm._v("Update Password\n          ")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              ]
             )
           ]
         )

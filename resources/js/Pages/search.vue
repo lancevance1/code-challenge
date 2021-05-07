@@ -1,11 +1,13 @@
 <template>
   <layout title="Welcome">
+    <div class="px-4 py-8">
     <div class="py-1 text-base">Total results: {{ total }}</div>
     <loading v-if="hideLoading"></loading>
     <waterfall-component
       :items="items"
       :searchResult="searchResult"
     ></waterfall-component>
+    </div>
   </layout>
 </template>
 

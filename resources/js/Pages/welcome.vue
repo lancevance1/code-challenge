@@ -1,6 +1,6 @@
 <template>
   <layout title="Media Library">
-    <div class="text-base">
+    <div class="text-base px-4 py-8">
       <h1>Welcome User: {{ $page.props.auth.user.name }}</h1>
     </div>
 

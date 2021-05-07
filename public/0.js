@@ -785,7 +785,11 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("\n                  Search\n                ")]
+                      [
+                        _vm._v(
+                          "\n                    Search\n                  "
+                        )
+                      ]
                     )
                   ])
                 ])
@@ -799,21 +803,12 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container mx-auto" }, [
-      _c("div", { staticClass: "antialiased text-gray-900 px-6" }, [
-        _c("div", { staticClass: "md:flex md:flex-grow md:overflow-hidden" }, [
-          _c(
-            "div",
-            {
-              staticClass: "md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto",
-              attrs: { "scroll-region": "" }
-            },
-            [_vm._t("default")],
-            2
-          )
-        ])
-      ])
-    ])
+    _c(
+      "div",
+      { staticClass: "container mx-auto px-0.5 " },
+      [_vm._t("default")],
+      2
+    )
   ])
 }
 var staticRenderFns = []
