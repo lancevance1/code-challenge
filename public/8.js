@@ -35,6 +35,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -53,8 +65,13 @@ __webpack_require__.r(__webpack_exports__);
       form: this.$inertia.form({
         _method: 'put',
         name: this.$page.props.auth.user.name,
-        email: this.$page.props.auth.user.email,
-        password: null
+        email: this.$page.props.auth.user.email
+      }),
+      formPassword: this.$inertia.form({
+        _method: 'put',
+        password: null,
+        new_password: null,
+        new_password_confirmation: null
       })
     };
   },
@@ -62,6 +79,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     update: function update() {
       this.form.post(this.$page.props.urls.update.replace(":id", this.$page.props.auth.user.id));
+    },
+    updatePass: function updatePass() {
+      this.formPassword.post(this.$page.props.urls.updatePassword.replace(":id", this.$page.props.auth.user.id));
     }
   }
 });
@@ -256,23 +276,6 @@ var render = function() {
                     },
                     expression: "form.email"
                   }
-                }),
-                _vm._v(" "),
-                _c("text-input", {
-                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
-                  attrs: {
-                    error: _vm.form.errors.password,
-                    type: "password",
-                    autocomplete: "new-password",
-                    label: "Password"
-                  },
-                  model: {
-                    value: _vm.form.password,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "password", $$v)
-                    },
-                    expression: "form.password"
-                  }
                 })
               ],
               1
@@ -292,6 +295,112 @@ var render = function() {
                     attrs: { loading: _vm.form.processing, type: "submit" }
                   },
                   [_vm._v("Update User")]
+                )
+              ],
+              1
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "bg-white rounded-md shadow overflow-hidden max-w-3xl w-full"
+      },
+      [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.updatePass($event)
+              }
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" },
+              [
+                _c("text-input", {
+                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                  attrs: {
+                    error: _vm.formPassword.errors.password,
+                    type: "password",
+                    autocomplete: "current-password",
+                    label: "Current Password"
+                  },
+                  model: {
+                    value: _vm.formPassword.password,
+                    callback: function($$v) {
+                      _vm.$set(_vm.formPassword, "password", $$v)
+                    },
+                    expression: "formPassword.password"
+                  }
+                }),
+                _vm._v(" "),
+                _c("text-input", {
+                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                  attrs: {
+                    error: _vm.formPassword.errors.new_password,
+                    type: "password",
+                    autocomplete: "new-password",
+                    label: "New Password"
+                  },
+                  model: {
+                    value: _vm.formPassword.new_password,
+                    callback: function($$v) {
+                      _vm.$set(_vm.formPassword, "new_password", $$v)
+                    },
+                    expression: "formPassword.new_password"
+                  }
+                }),
+                _vm._v(" "),
+                _c("text-input", {
+                  staticClass: "pr-6 pb-8 w-full lg:w-1/2",
+                  attrs: {
+                    error: _vm.formPassword.errors.new_password_confirmation,
+                    type: "password",
+                    autocomplete: "new-password",
+                    label: "Confirm New Password"
+                  },
+                  model: {
+                    value: _vm.formPassword.new_password_confirmation,
+                    callback: function($$v) {
+                      _vm.$set(
+                        _vm.formPassword,
+                        "new_password_confirmation",
+                        $$v
+                      )
+                    },
+                    expression: "formPassword.new_password_confirmation"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center"
+              },
+              [
+                _c(
+                  "loading-button",
+                  {
+                    staticClass: "btn-blue",
+                    attrs: {
+                      loading: _vm.formPassword.processing,
+                      type: "submit"
+                    }
+                  },
+                  [_vm._v("Update Password")]
                 )
               ],
               1

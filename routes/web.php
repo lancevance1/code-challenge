@@ -36,7 +36,7 @@ Route::post('logout', [LoginController::class, 'logout'])
 
 
 Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
-    ->name('forgotPassword');
+    ->name('forgotPassword')->middleware('guest');
 
 
 Route::post('forgot-password', [ForgotPasswordController::class, 'sendLinkEmail'])
@@ -75,4 +75,8 @@ Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.ed
 
 Route::put('users/{user}', [UserController::class, 'update'])
     ->name('users.update')
+    ->middleware('auth');
+
+Route::put('users/{user}/Password', [UserController::class, 'updatePassword'])
+    ->name('users.updatePassword')
     ->middleware('auth');

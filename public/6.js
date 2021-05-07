@@ -74,6 +74,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -277,6 +281,7 @@ var render = function() {
                       label: "Username",
                       type: "text",
                       autofocus: "",
+                      autocomplete: "name",
                       autocapitalize: "on"
                     },
                     model: {
@@ -295,6 +300,7 @@ var render = function() {
                       label: "Email",
                       type: "email",
                       autofocus: "",
+                      autocomplete: "username",
                       autocapitalize: "off"
                     },
                     model: {
@@ -311,6 +317,7 @@ var render = function() {
                     attrs: {
                       error: _vm.form.errors.password,
                       label: "Password",
+                      autocomplete: "new-password",
                       type: "password"
                     },
                     model: {
@@ -327,6 +334,7 @@ var render = function() {
                     attrs: {
                       error: _vm.form.errors.password_confirmation,
                       label: "Confirm Password",
+                      autocomplete: "new-password",
                       type: "password"
                     },
                     model: {

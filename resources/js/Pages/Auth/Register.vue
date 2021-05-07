@@ -16,6 +16,7 @@
                 label="Username"
                 type="text"
                 autofocus
+                autocomplete="name"
                 autocapitalize="on"
             />
             <TextInput
@@ -25,6 +26,7 @@
                 label="Email"
                 type="email"
                 autofocus
+                autocomplete="username"
                 autocapitalize="off"
             />
             <TextInput
@@ -32,6 +34,7 @@
                 :error="form.errors.password"
                 class="mt-6"
                 label="Password"
+                autocomplete="new-password"
                 type="password"
             />
             <TextInput
@@ -39,6 +42,7 @@
                 :error="form.errors.password_confirmation"
                 class="mt-6"
                 label="Confirm Password"
+                autocomplete="new-password"
                 type="password"
             />
 

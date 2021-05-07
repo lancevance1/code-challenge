@@ -49,6 +49,7 @@ class HandleInertiaRequests extends Middleware
 //            'register' => route('forgotPassword'),
 
 
+
              // Synchronously
              'appName' => config('app.name'),
 

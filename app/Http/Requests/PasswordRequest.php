@@ -1,13 +1,11 @@
 <?php
 
-
 namespace App\Http\Requests;
 
 use App\Rules\MatchOldPassword;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UserRequest extends FormRequest
+class PasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,13 +25,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => 'required|string|max:50',
-            "email" => [
-                'required',
-                Rule::unique('users')->ignore(auth()->user()->id),
-                'email',
-            ],
+            "password" =>  ['required', 'string', new MatchOldPassword],
 
+            "new_password" =>   'required|string|min:8',
+
+            "new_password_confirmation" => 'required_with:new_password|same:new_password'
         ];
     }
 }

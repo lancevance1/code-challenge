@@ -16,6 +16,7 @@
               label="Email"
               type="email"
               autofocus
+              autocomplete="username"
               autocapitalize="off"
             />
             <TextInput
@@ -23,6 +24,7 @@
               :error="form.errors.password"
               class="mt-6"
               label="Password"
+              autocomplete="current-password"
               type="password"
             />
             <label class="mt-6 select-none flex items-center" for="remember">
@@ -68,7 +70,7 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-        email: "admin@test.com",
+        email: "",
         password: "",
         remember: false,
       }),

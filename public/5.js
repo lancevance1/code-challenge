@@ -73,6 +73,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -89,7 +91,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: this.$inertia.form({
-        email: "admin@test.com",
+        email: "",
         password: "",
         remember: false
       })
@@ -279,6 +281,7 @@ var render = function() {
                       label: "Email",
                       type: "email",
                       autofocus: "",
+                      autocomplete: "username",
                       autocapitalize: "off"
                     },
                     model: {
@@ -295,6 +298,7 @@ var render = function() {
                     attrs: {
                       error: _vm.form.errors.password,
                       label: "Password",
+                      autocomplete: "current-password",
                       type: "password"
                     },
                     model: {

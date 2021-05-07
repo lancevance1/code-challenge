@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
@@ -25,6 +26,8 @@ class UserController extends Controller
         return Inertia::render('editUser', [
             'urls' => [
                 'update' => route('users.update', ':id'),
+                'updatePassword'=>route('users.updatePassword',':id'),
+
             ],
 //            'apis' => [
 //                'index' => route('api.users.index'),
@@ -41,6 +44,15 @@ class UserController extends Controller
         $this->userRepository->update($request, $user);
 
         return Redirect::back()->with('success', 'User updated.');
+
+    }
+
+    public function updatePassword(PasswordRequest $request, User $user)
+    {
+
+        $this->userRepository->update($request, $user);
+
+        return Redirect::back()->with('success', 'Password updated.');
 
     }
 
