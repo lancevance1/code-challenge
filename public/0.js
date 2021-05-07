@@ -288,6 +288,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -295,7 +368,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       searchResult: "",
-      isLogin: false
+      isLogin: false,
+      showMenu: false
     };
   },
   props: {
@@ -327,6 +401,9 @@ __webpack_require__.r(__webpack_exports__);
       if (typeof this.searchResult !== "undefined" && this.searchResult.length !== 0) {
         window.location.href = "/search?q=" + e;
       }
+    },
+    clickMenu: function clickMenu() {
+      this.showMenu = !this.showMenu;
     }
   }
 });
@@ -670,127 +747,334 @@ var render = function() {
             { staticClass: "pt-6 text-4xl font-bold text-center" },
             [
               _c("inertia-link", { attrs: { href: "/" } }, [
-                _vm._v("Media Library ")
+                _vm._v("Media Library")
               ])
             ],
             1
           ),
           _vm._v(" "),
-          _c("nav", { staticClass: "nav" }, [
-            _c("ul", { staticClass: "nav-ul" }, [
-              _c(
-                "li",
-                [
-                  _c(
-                    "inertia-link",
-                    { staticClass: "text-lg", attrs: { href: "/" } },
-                    [_vm._v("Home")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "inertia-link",
-                    { staticClass: "text-lg", attrs: { href: "/media" } },
-                    [_vm._v("Media")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("li", [
-                _c("div", { staticClass: "flex" }, [
-                  _c("input", {
-                    directives: [
+          _c("nav", { staticClass: "bg-gray-100" }, [
+            _c(
+              "div",
+              { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "relative flex items-center justify-between h-16"
+                  },
+                  [
+                    _c(
+                      "div",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.searchResult,
-                        expression: "searchResult"
-                      }
-                    ],
-                    staticClass: "w-full ml-1",
-                    attrs: { type: "text", placeholder: "Search..." },
-                    domProps: { value: _vm.searchResult },
-                    on: {
-                      keyup: function($event) {
-                        if (
-                          !$event.type.indexOf("key") &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
-                          )
-                        ) {
-                          return null
-                        }
-                        return _vm.goToSearch(_vm.searchResult)
+                        staticClass:
+                          "absolute inset-y-0 left-0 flex items-center sm:hidden"
                       },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.searchResult = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "button",
-                      on: {
-                        click: function($event) {
-                          return _vm.goToSearch(_vm.searchResult)
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    Search\n                  ")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _vm.isLogin
-                    ? _c("dropdown", { attrs: { placement: "bottom-end" } })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.isLogin
-                    ? _c(
-                        "inertia-link",
-                        { staticClass: "text-lg", attrs: { href: "/login" } },
-                        [_vm._v("Log in")]
-                      )
-                    : _vm._e()
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white\n                      hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white",
+                            attrs: {
+                              type: "button",
+                              "aria-controls": "mobile-menu",
+                              "aria-expanded": "false"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.clickMenu()
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("Open main menu")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "block h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor",
+                                  "aria-hidden": "true"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d: "M4 6h16M4 12h16M4 18h16"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "hidden h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor",
+                                  "aria-hidden": "true"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d: "M6 18L18 6M6 6l12 12"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+                      },
+                      [
+                        _c("div", { staticClass: "hidden sm:block sm:ml-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "flex space-x-4" },
+                            [
+                              _c(
+                                "inertia-link",
+                                {
+                                  staticClass: "text-lg",
+                                  attrs: { href: "/" }
+                                },
+                                [_vm._v("Home")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "inertia-link",
+                                {
+                                  staticClass: "text-lg",
+                                  attrs: { href: "/media" }
+                                },
+                                [_vm._v("Media")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "flex" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.searchResult,
+                                      expression: "searchResult"
+                                    }
+                                  ],
+                                  staticClass: "w-full ml-1",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Search..."
+                                  },
+                                  domProps: { value: _vm.searchResult },
+                                  on: {
+                                    keyup: function($event) {
+                                      if (
+                                        !$event.type.indexOf("key") &&
+                                        _vm._k(
+                                          $event.keyCode,
+                                          "enter",
+                                          13,
+                                          $event.key,
+                                          "Enter"
+                                        )
+                                      ) {
+                                        return null
+                                      }
+                                      return _vm.goToSearch(_vm.searchResult)
+                                    },
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.searchResult = $event.target.value
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "button",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.goToSearch(_vm.searchResult)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                      Search\n                    "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+                      },
+                      [
+                        _vm.isLogin
+                          ? _c("dropdown", {
+                              attrs: { placement: "bottom-end" }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !_vm.isLogin
+                          ? _c(
+                              "inertia-link",
+                              {
+                                staticClass: "text-lg",
+                                attrs: { href: "/login" }
+                              },
+                              [_vm._v("Log in\n              ")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !_vm.isLogin
+                          ? _c(
+                              "inertia-link",
+                              {
+                                staticClass: "text-lg",
+                                attrs: { href: "/register" }
+                              },
+                              [_vm._v("Register\n              ")]
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showMenu,
+                    expression: "showMenu"
+                  }
                 ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  !_vm.isLogin
-                    ? _c(
-                        "inertia-link",
+                staticClass: "sm:hidden",
+                attrs: { id: "mobile-menu" }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "px-2 pt-2 pb-3 space-y-1" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        staticClass: "text-lg block px-3 py-2",
+                        attrs: { href: "/" }
+                      },
+                      [_vm._v("Home")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "inertia-link",
+                      {
+                        staticClass: "text-lg block px-3 py-2",
+                        attrs: { href: "/media" }
+                      },
+                      [_vm._v("Media")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.searchResult,
+                            expression: "searchResult"
+                          }
+                        ],
+                        staticClass: "w-full ml-1",
+                        attrs: { type: "text", placeholder: "Search..." },
+                        domProps: { value: _vm.searchResult },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.goToSearch(_vm.searchResult)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.searchResult = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
                         {
-                          staticClass: "text-lg",
-                          attrs: { href: "/register" }
+                          staticClass: "button",
+                          on: {
+                            click: function($event) {
+                              return _vm.goToSearch(_vm.searchResult)
+                            }
+                          }
                         },
-                        [_vm._v("Register")]
+                        [_vm._v("\n                Search\n              ")]
                       )
-                    : _vm._e()
-                ],
-                1
-              )
-            ])
+                    ])
+                  ],
+                  1
+                )
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
