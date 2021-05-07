@@ -286,6 +286,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -377,7 +379,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".nav-ul > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-x-reverse: 0;\n  margin-right: calc(1rem * var(--tw-space-x-reverse));\n  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.nav-ul {\n  display: flex;\n  flex-direction: column;\n  list-style-type: none;\n}\n@media (min-width: 1024px) {\n.nav-ul {\n    flex-direction: row;\n}\n}\n.nav-ul li {\n  margin-left: 0.5rem !important;\n}\n.nav-ul li > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-x-reverse: 0;\n  margin-right: calc(1rem * var(--tw-space-x-reverse));\n  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.nav-ul li {\n  display: flex;\n  align-items: center;\n}\n.button {\n  --tw-bg-opacity: 1;\n  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));\n}\n.button:hover {\n  --tw-bg-opacity: 1;\n  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));\n}\n.button {\n  border-radius: 0.25rem;\n  font-weight: 700;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  --tw-text-opacity: 1;\n  color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.nav {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n  position: relative;\n}", ""]);
+exports.push([module.i, ".nav-ul > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-x-reverse: 0;\n  margin-right: calc(1rem * var(--tw-space-x-reverse));\n  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.nav-ul {\n  display: flex;\n  flex-direction: column;\n  list-style-type: none;\n}\n@media (min-width: 1024px) {\n.nav-ul {\n    flex-direction: row;\n}\n}\n.nav-ul li {\n  margin-left: 0.5rem !important;\n}\n.nav-ul li > :not([hidden]) ~ :not([hidden]) {\n  --tw-space-x-reverse: 0;\n  margin-right: calc(1rem * var(--tw-space-x-reverse));\n  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));\n}\n.nav-ul li {\n  display: flex;\n  align-items: center;\n}\n.button {\n  --tw-bg-opacity: 1;\n  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));\n}\n.button:hover {\n  --tw-bg-opacity: 1;\n  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));\n}\n.button {\n  border-radius: 0.25rem;\n  font-weight: 700;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  --tw-text-opacity: 1;\n  color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.nav {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n  position: relative;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -675,125 +677,119 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("nav", { staticClass: "nav" }, [
-            _c("div", { staticClass: "container px-6 mx-auto" }, [
-              _c("ul", { staticClass: "nav-ul" }, [
-                _c(
-                  "li",
-                  [
-                    _vm.isLogin
-                      ? _c("dropdown", { attrs: { placement: "bottom-end" } })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.isLogin
-                      ? _c(
-                          "inertia-link",
-                          { staticClass: "text-lg", attrs: { href: "/login" } },
-                          [_vm._v("Log in")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    !_vm.isLogin
-                      ? _c(
-                          "inertia-link",
-                          {
-                            staticClass: "text-lg",
-                            attrs: { href: "/register" }
-                          },
-                          [_vm._v("Register")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c(
-                      "inertia-link",
-                      { staticClass: "text-lg", attrs: { href: "/" } },
-                      [_vm._v("Home")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c(
-                      "inertia-link",
-                      { staticClass: "text-lg", attrs: { href: "/media" } },
-                      [_vm._v("Media")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("li", [
-                  _c("div", { staticClass: "flex" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.searchResult,
-                          expression: "searchResult"
+            _c("ul", { staticClass: "nav-ul" }, [
+              _c(
+                "li",
+                [
+                  _c(
+                    "inertia-link",
+                    { staticClass: "text-lg", attrs: { href: "/" } },
+                    [_vm._v("Home")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "inertia-link",
+                    { staticClass: "text-lg", attrs: { href: "/media" } },
+                    [_vm._v("Media")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [
+                _c("div", { staticClass: "flex" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchResult,
+                        expression: "searchResult"
+                      }
+                    ],
+                    staticClass: "w-full ml-1",
+                    attrs: { type: "text", placeholder: "Search..." },
+                    domProps: { value: _vm.searchResult },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
                         }
-                      ],
-                      staticClass: "w-full ml-1",
-                      attrs: { type: "text", placeholder: "Search..." },
-                      domProps: { value: _vm.searchResult },
+                        return _vm.goToSearch(_vm.searchResult)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.searchResult = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button",
                       on: {
-                        keyup: function($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
+                        click: function($event) {
                           return _vm.goToSearch(_vm.searchResult)
-                        },
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.searchResult = $event.target.value
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "button",
-                        on: {
-                          click: function($event) {
-                            return _vm.goToSearch(_vm.searchResult)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    Search\n                  "
-                        )
-                      ]
-                    )
-                  ])
+                    },
+                    [_vm._v("\n                    Search\n                  ")]
+                  )
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _vm.isLogin
+                    ? _c("dropdown", { attrs: { placement: "bottom-end" } })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.isLogin
+                    ? _c(
+                        "inertia-link",
+                        { staticClass: "text-lg", attrs: { href: "/login" } },
+                        [_vm._v("Log in")]
+                      )
+                    : _vm._e()
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  !_vm.isLogin
+                    ? _c(
+                        "inertia-link",
+                        {
+                          staticClass: "text-lg",
+                          attrs: { href: "/register" }
+                        },
+                        [_vm._v("Register")]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
             ])
           ])
         ]),

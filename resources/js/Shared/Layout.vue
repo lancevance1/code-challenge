@@ -9,24 +9,9 @@
         <nav
           class="nav"
         >
-          <div class="container px-6 mx-auto">
-            <ul class="nav-ul">
-              <li>
-                <dropdown
-                  v-if="isLogin"
-                  placement="bottom-end"
-                >
-                </dropdown>
-                <inertia-link v-if="!isLogin" class="text-lg" href="/login"
-                  >Log in</inertia-link
-                >
-              </li>
 
-              <li>
-                <inertia-link v-if="!isLogin" class="text-lg" href="/register"
-                >Register</inertia-link
-                >
-              </li>
+            <ul class="nav-ul">
+
 
               <li>
                 <inertia-link class="text-lg" href="/">Home</inertia-link>
@@ -51,8 +36,25 @@
                   </button>
                 </div>
               </li>
+
+              <li>
+                <dropdown
+                    v-if="isLogin"
+                    placement="bottom-end"
+                >
+                </dropdown>
+                <inertia-link v-if="!isLogin" class="text-lg" href="/login"
+                >Log in</inertia-link
+                >
+              </li>
+
+              <li>
+                <inertia-link v-if="!isLogin" class="text-lg" href="/register"
+                >Register</inertia-link
+                >
+              </li>
             </ul>
-          </div>
+
         </nav>
       </div>
       <flashcard></flashcard>
@@ -135,6 +137,6 @@ export default {
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
 }
 .nav{
-  @apply relative flex flex-wrap items-center justify-between px-2 py-2
+  @apply relative flex flex-wrap items-center justify-center   px-2 py-2
 }
 </style>
